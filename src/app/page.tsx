@@ -1,10 +1,10 @@
-import Image from 'next/image'
+'use client'
 
-import ParticlesContainer from '../components/ParticlesContainer'
-import ProjectsBtn from '../components/ProjectsBtn'
-import Avatar from '../components/Avatar'
+import Avatar from '@/components/Avatar'
+import ParticlesContainer from '@/components/ParticlesContainer'
+import ProjectsBtn from '@/components/ProjectsBtn'
+import { fadeIn } from '@/utils/variants'
 import { motion } from 'framer-motion'
-import { fadeIn } from '../variants'
 
 const Home = () => {
   return (
@@ -18,7 +18,7 @@ const Home = () => {
             initial='hidden'
             animate='show'
             exit='hidden'
-            className='h1'
+            className='h1 z-10'
           >
             Transform Ideas <br />
             Into <span className='text-accent'>Digial Reality</span>
@@ -37,7 +37,7 @@ const Home = () => {
           </motion.p>
 
           {/* btn */}
-          <div className='flex justify-center xl:hidden relative'>
+          <div className='flex justify-center xl:hidden relative z-10'>
             <ProjectsBtn />
           </div>
           <motion.div
@@ -45,7 +45,7 @@ const Home = () => {
             initial='hidden'
             animate='show'
             exit='hidden'
-            className='hidden xl:flex'
+            className='hidden xl:flex z-10'
           >
             <ProjectsBtn />
           </motion.div>

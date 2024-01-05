@@ -1,13 +1,15 @@
+'use client'
+
 // icons
 import { FaHtml5, FaCss3, FaJs, FaReact, FaWordpress, FaFigma } from 'react-icons/fa'
 
 import { SiNextdotjs, SiFramer, SiAdobexd, SiAdobephotoshop } from 'react-icons/si'
 
-import Avatar from '../../components/Avatar'
-import Circles from '../../components/Circles'
+import Avatar from '@/components/Avatar'
+import Circles from '@/components/Circles'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { fadeIn } from '../../variants'
+import { fadeIn } from '@/utils/variants'
 import CountUp from 'react-countup'
 
 //  data
@@ -29,7 +31,7 @@ const aboutData = [
       },
       {
         title: 'UI/UX Design',
-        icons: [<FaFigma key={1} />, <SiAdobexd key={2} />, <SiAdobephotoshop key={3} />],
+        icons: [<FaFigma key={8} />, <SiAdobexd key={9} />, <SiAdobephotoshop key={10} />],
       },
     ],
   },
@@ -185,14 +187,14 @@ const About = () => {
           className='flex flex-col w-full xl:max-w-[48%] h-[480px]'
         >
           <div className='flex gap-x-4 xl:gap-x-8 mx-auto xl:mx-0 mb-4'>
-            {aboutData.map((item, i) => (
+            {aboutData.map((item, itemIndex) => (
               <div
                 className={`${
-                  index === i &&
+                  index === itemIndex &&
                   'text-accent after:w-[100%] after:bg-accent after:transition-all after:duration-300'
                 } cursor-pointer capitalize xl:text-lg relative after:w-8 after:h-[2px] after:bg-white after:absolute after:-bottom-1 after:left-0`}
-                onClick={() => setIndex(i)}
-                key={i}
+                onClick={() => setIndex(itemIndex)}
+                key={itemIndex}
               >
                 {item.title}
               </div>

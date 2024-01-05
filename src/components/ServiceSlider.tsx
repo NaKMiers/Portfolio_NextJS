@@ -11,7 +11,7 @@ import {
 import 'swiper/css'
 import 'swiper/css/free-mode'
 import 'swiper/css/pagination'
-import { FreeMode, Pagination } from 'swiper'
+import { FreeMode, Pagination } from 'swiper/modules'
 
 // data
 const serviceData = [
