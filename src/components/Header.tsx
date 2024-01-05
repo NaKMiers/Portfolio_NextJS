@@ -9,8 +9,12 @@ const Header = () => {
           {/* logo */}
           <Link href='/'>
             <h1 className='text-nowrap text-[36px] text-white tracking-tighter'>
-              <span className='font-extrabold'>Khoa</span>{' '}
-              <span className='font-normal'>Nguyen</span>{' '}
+              <span className='font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-accent from-0% to-white to-85%'>
+                Anh
+              </span>{' '}
+              <span className='font-normal bg-clip-text text-transparent bg-gradient-to-r from-white from-20% to-sky-300'>
+                Khoa
+              </span>{' '}
               <span className='text-accent font-bold'>.</span>
             </h1>
           </Link>
