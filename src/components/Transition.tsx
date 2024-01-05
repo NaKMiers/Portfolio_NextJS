@@ -16,7 +16,6 @@ const transitionVariants = {
 }
 
 const Transition = () => {
-  console.log('Transition')
   return (
     <>
       <motion.div

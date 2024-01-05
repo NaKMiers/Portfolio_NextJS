@@ -1,4 +1,3 @@
-import App from '@/components/App'
 import Header from '@/components/Header'
 import Nav from '@/components/Nav'
 import TopLeftImg from '@/components/TopLeftImg'
@@ -20,15 +19,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
+      <head />
       <body
         className={`page bg-site text-white bg-cover bg-no-repeat ${sora.variable} font-sora relative`}
       >
-        <App>
-          <TopLeftImg />
-          <Nav />
-          <Header />
-          {children}
-        </App>
+        <TopLeftImg />
+        <Nav />
+        <Header />
+        {children}
       </body>
     </html>
   )

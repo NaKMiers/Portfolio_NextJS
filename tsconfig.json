@@ -28,7 +28,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/components/Avatar.jsx",
-    "src/components/ParticlesContainer.tsj"
+    "src/components/ParticlesContainer.tsj",
+    "src/app/head.tsx",
+    "src/app/about/page.jsx"
   ],
   "exclude": ["node_modules"]
 }

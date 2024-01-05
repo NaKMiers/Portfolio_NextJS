@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import Socials from './Socials'
 
@@ -9,7 +8,11 @@ const Header = () => {
         <div className='flex flex-col lg:flex-row justify-between items-center gap-y-6 py-8'>
           {/* logo */}
           <Link href='/'>
-            <Image src='logo.svg' alt='logo' width={220} height={48} priority={true} />
+            <h1 className='text-nowrap text-[36px] text-white tracking-tighter'>
+              <span className='font-extrabold'>Khoa</span>{' '}
+              <span className='font-normal'>Nguyen</span>{' '}
+              <span className='text-accent font-bold'>.</span>
+            </h1>
           </Link>
 
           {/* socials */}
