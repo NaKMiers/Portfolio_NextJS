@@ -26,8 +26,17 @@ import { fadeIn } from '@/utils/variants'
 import CountUp from 'react-countup'
 import Wrapper from '@/components/Wrapper'
 
+type AboutDataItem = {
+  title: string
+  info: {
+    title: string
+    icons?: React.ReactNode[]
+    stage?: string
+  }[]
+}
+
 //  data
-const aboutData = [
+const aboutData: AboutDataItem[] = [
   {
     title: 'skills',
     info: [
