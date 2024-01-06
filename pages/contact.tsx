@@ -58,7 +58,7 @@ const Contact = () => {
             className='flex-1 flex flex-col gap-6 w-full mx-auto'
           >
             <input
-              className='input lowercase'
+              className='input normal-case'
               type='email'
               placeholder='Email'
               required
