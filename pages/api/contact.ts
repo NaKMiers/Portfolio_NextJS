@@ -11,7 +11,6 @@ const transporter = nodeMailer.createTransport({
 })
 
 function sendMail(to: string, subject: string, html: string) {
-  console.log('sendMail: ', to, subject, html)
   transporter.sendMail({
     from: 'Portfolio',
     to: to,
@@ -25,7 +24,6 @@ export default async function handler(req: any, res: any) {
   try {
     if (req.method === 'POST') {
       const { email, firstname, lastname, subject, message } = req.body
-      console.log('reqBody: ', req.body)
 
       sendMail(
         process.env.MAIL_TO!,
