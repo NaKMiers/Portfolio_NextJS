@@ -58,7 +58,7 @@ const Contact = () => {
             className='flex-1 flex flex-col gap-6 w-full mx-auto'
           >
             <input
-              className='input'
+              className='input lowercase'
               type='email'
               placeholder='Email'
               required
@@ -98,7 +98,7 @@ const Contact = () => {
               placeholder='message'
               required
               onChange={e => setForm(prev => ({ ...prev, message: e.target.value }))}
-              value={form.subject}
+              value={form.message}
             />
 
             <button className='btn rounded-full border border-white/50 max-w-[170px] px-8 transiton-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group'>
