@@ -12,19 +12,19 @@ const workSlides = {
     {
       images: [
         {
-          title: 'title',
+          title: 'Dream Vacations',
           path: '/thumb1.jpg',
         },
         {
-          title: 'title',
+          title: 'Digital Flow',
           path: '/thumb2.jpg',
         },
         {
-          title: 'title',
+          title: 'Pixel Chip Portfolio',
           path: '/thumb3.jpg',
         },
         {
-          title: 'title',
+          title: 'Street Slicer',
           path: '/thumb4.jpg',
         },
       ],
@@ -32,20 +32,12 @@ const workSlides = {
     {
       images: [
         {
-          title: 'title',
+          title: 'Exposio',
           path: '/thumb4.jpg',
         },
         {
-          title: 'title',
+          title: 'One Page Portfolio',
           path: '/thumb1.jpg',
-        },
-        {
-          title: 'title',
-          path: '/thumb2.jpg',
-        },
-        {
-          title: 'title',
-          path: '/thumb3.jpg',
         },
       ],
     },
@@ -83,7 +75,7 @@ const WorkSlider = () => {
                       <div className='delay-100'>LIVE</div>
 
                       <div className='translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-150'>
-                        PROJECT
+                        {image.title}
                       </div>
 
                       <div className='text-xl translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-200'>

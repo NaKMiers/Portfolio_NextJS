@@ -39,7 +39,7 @@ const ParticlesContainer = () => {
               quantity: 90,
             },
             repulse: {
-              distance: 200,
+              distance: 150,
               duration: 0.4,
             },
           },
@@ -73,7 +73,7 @@ const ParticlesContainer = () => {
               enable: true,
               area: 800,
             },
-            value: 80,
+            value: 100,
           },
           opacity: {
             value: 0.5,

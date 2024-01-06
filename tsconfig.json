@@ -19,7 +19,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./*"]
     }
   },
   "include": [
@@ -27,10 +27,14 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/components/Avatar.jsx",
-    "src/components/ParticlesContainer.tsj",
+    "components/Avatar.jsx",
+    "components/ParticlesContainer.tsj",
     "src/app/head.tsx",
-    "src/app/about/page.jsx"
+    "pages/about/page.jsx",
+    "src/pages/_app.ts",
+    "src/pages/_app.tsx",
+    "pages/head.js",
+    "pages/api/contact.ts"
   ],
   "exclude": ["node_modules"]
 }
