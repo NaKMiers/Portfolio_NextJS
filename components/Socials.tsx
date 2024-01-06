@@ -1,17 +1,26 @@
 import Link from 'next/link'
+import { FaGithub } from 'react-icons/fa'
 
 import {
-  RiYoutubeLine,
-  RiInstagramLine,
-  RiFacebookLine,
-  RiDribbbleLine,
   RiBehanceLine,
+  RiDribbbleLine,
+  RiFacebookLine,
+  RiInstagramLine,
   RiPinterestLine,
+  RiYoutubeLine,
 } from 'react-icons/ri'
+import { SiNpm, SiZalo } from 'react-icons/si'
 
 const Socials = () => {
   return (
     <div className='flex items-center gap-x-5 text-xl'>
+      <Link
+        target='_blank'
+        href='https://github.com/NaKMiers'
+        className='hover:text-accent transition-all duration-300'
+      >
+        <FaGithub />
+      </Link>
       <Link
         target='_blank'
         href='https://www.youtube.com/channel/UCmgkzDkx8EirOSBLLVm8B4Q'
@@ -35,24 +44,17 @@ const Socials = () => {
       </Link>
       <Link
         target='_blank'
-        href='https://dribbble.com/nakmiers'
-        className='hover:text-accent transition-all duration-300'
-      >
-        <RiDribbbleLine />
-      </Link>
-      <Link
-        target='_blank'
-        href='https://www.behance.net/bibi13'
-        className='hover:text-accent transition-all duration-300'
-      >
-        <RiBehanceLine />
-      </Link>
-      <Link
-        target='_blank'
         href='https://www.pinterest.com/nakmiers'
         className='hover:text-accent transition-all duration-300'
       >
         <RiPinterestLine />
+      </Link>
+      <Link
+        target='_blank'
+        href='https://zalo.me/0899320427'
+        className='hover:text-accent text-2xl transition-all duration-300'
+      >
+        <SiZalo />
       </Link>
     </div>
   )

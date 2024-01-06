@@ -43,10 +43,11 @@ const Contact = () => {
             initial='hidden'
             animate='show'
             exit='hidden'
-            className='h2 text-center mb-12'
+            className='h2 mt-10 xl:mt-0 text-center mb-12'
           >
             Let&apos;s <span className='text-accent'>talk.</span>
           </motion.h2>
+
           {/* form */}
           <motion.form
             onSubmit={handleSubmitContactForm}

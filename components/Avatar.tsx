@@ -7,8 +7,9 @@ const Avatar = () => {
         className='translate-z-0 w-full h-full'
         src='/avatar.png'
         alt='avatar'
-        width={1080}
-        height={1080}
+        width={500}
+        height={500}
+        priority={true}
       />
     </div>
   )

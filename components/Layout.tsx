@@ -22,6 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           name='description'
           content='I help designers, businesses and startups bring their ideas to life. Powered by passion, dream and coffee.'
         />
+        <link rel='icon' type='image/x-icon' href='/favicon.ico' />
       </Head>
       <TopLeftImg />
       <Nav />

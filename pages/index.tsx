@@ -37,7 +37,7 @@ const Home = () => {
             initial='hidden'
             animate='show'
             exit='hidden'
-            className='max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16'
+            className='max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16 z-10'
           >
             I help designers, businesses and startups bring their ideas to life. Powered by passion,
             dream and coffee.
@@ -58,8 +58,11 @@ const Home = () => {
         </div>
       </div>
 
-      <div className='w-[1200px] h-full absolute right-0 bottom-0'>
-        <div className='bg-none xl:bg-explosion xl:bg-cover xl:bg-right xl:bg-no-repeat w-full h-screen absolute mix-blend-color-dodge translate-z-0' />
+      <div className='w-full h-full absolute right-0 bottom-0'>
+        <div
+          style={{ backgroundSize: '138%', backgroundPosition: '0 center' }}
+          className='opacity-50 bg-none xl:bg-explosion xl:bg-cover xl:bg-right xl:bg-no-repeat w-full h-screen absolute mix-blend-color-dodge'
+        />
 
         <ParticlesContainer />
 

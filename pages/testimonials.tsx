@@ -13,13 +13,13 @@ const Testimonials = () => {
           initial='hidden'
           animate='show'
           exit='hidden'
-          className='h2 mb-8 xl:mb-0'
+          className='h2 mt-10 xl:mt-0 mb-8 xl:mb-0'
         >
           What clients <span className='text-accent'></span>say.
         </motion.h2>
 
         <motion.div
-          className='max-w-[968px] '
+          className='max-w-[968px] xl:mx-auto'
           variants={fadeIn('up', 0.4)}
           initial='hidden'
           animate='show'
