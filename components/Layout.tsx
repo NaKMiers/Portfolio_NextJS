@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`page bg-site text-white bg-cover bg-no-repeat ${sora.variable} font-sora relative`}
     >
       <Head>
-        <title>Portfiolo | Anh Khoa Nguyen</title>
+        <title>Anh Khoa | Full Stack Developer</title>
         <meta
           name='description'
           content='I help designers, businesses and startups bring their ideas to life. Powered by passion, dream and coffee.'
