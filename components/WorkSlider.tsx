@@ -14,22 +14,22 @@ const workSlides = {
       projects: [
         {
           title: 'Dream Vacations',
-          path: '/dream-vacations.png',
+          path: '/dream-vacations.jpg',
           link: 'https://dream-vacations-01.netlify.app',
         },
         {
           title: 'Sonic Fiesta',
-          path: '/sonic-fiesta.png',
+          path: '/sonic-fiesta.jpg',
           link: 'https://sonic-fiesta.netlify.app',
         },
         {
           title: 'Exposio',
-          path: '/exposio.png',
+          path: '/exposio.jpg',
           link: 'https://exposio.netlify.app',
         },
         {
           title: 'Digital Flow',
-          path: '/digital-flow.png',
+          path: '/digital-flow.jpg',
           link: 'https://digital-flow-01.netlify.app',
         },
       ],
@@ -38,12 +38,12 @@ const workSlides = {
       projects: [
         {
           title: 'Street Slicer',
-          path: '/street-slicer.png',
+          path: '/street-slicer.jpg',
           link: 'https://street-slicer.netlify.app',
         },
         {
           title: 'Pixel Chip Portfolio',
-          path: '/pixel-chip.png',
+          path: '/pixel-chip.jpg',
           link: 'https://pixel-chic.netlify.app',
         },
       ],
