@@ -20,10 +20,10 @@ function sendMail(to: string, subject: string, html: string) {
 }
 
 export default async function handler(req: any, res: any) {
-  console.log(2131232)
   try {
     if (req.method === 'POST') {
       const { email, firstname, lastname, subject, message } = req.body
+      console.log(req.body)
 
       sendMail(
         process.env.MAIL_TO!,
