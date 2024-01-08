@@ -11,6 +11,8 @@ const transporter = nodeMailer.createTransport({
 })
 
 function sendMail(to: string, subject: string, html: string) {
+  console.log(html)
+
   transporter.sendMail({
     from: 'Portfolio',
     to: to,
