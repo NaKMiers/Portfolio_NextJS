@@ -29,7 +29,7 @@ const serviceData = [
   },
   {
     icon: <RxReader />,
-    title: 'Porfilio',
+    title: 'Portfolio',
     description: 'Portfolio specialist showcasing skills, experience, and achievements concisely.',
   },
   {
