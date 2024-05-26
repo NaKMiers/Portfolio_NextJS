@@ -13,6 +13,16 @@ const workSlides = {
     {
       projects: [
         {
+          title: 'Educational Resources',
+          path: '/ere.jpg',
+          link: 'https://ere-eta.vercel.app',
+        },
+        {
+          title: 'Anpha Shop',
+          path: '/anpha-shop.jpg',
+          link: 'http://anpha.shop',
+        },
+        {
           title: 'Dream Vacations',
           path: '/dream-vacations.jpg',
           link: 'https://dream-vacations-01.netlify.app',
@@ -21,16 +31,6 @@ const workSlides = {
           title: 'Sonic Fiesta',
           path: '/sonic-fiesta.jpg',
           link: 'https://sonic-fiesta.netlify.app',
-        },
-        {
-          title: 'Exposio',
-          path: '/exposio.jpg',
-          link: 'https://exposio.netlify.app',
-        },
-        {
-          title: 'Digital Flow',
-          path: '/digital-flow.jpg',
-          link: 'https://digital-flow-01.netlify.app',
         },
       ],
     },
@@ -46,6 +46,16 @@ const workSlides = {
           path: '/pixel-chip.jpg',
           link: 'https://pixel-chic.netlify.app',
         },
+        {
+          title: 'Exposio',
+          path: '/exposio.jpg',
+          link: 'https://exposio.netlify.app',
+        },
+        {
+          title: 'Digital Flow',
+          path: '/digital-flow.jpg',
+          link: 'https://digital-flow-01.netlify.app',
+        },
       ],
     },
   ],
@@ -59,8 +69,7 @@ const WorkSlider = () => {
         clickable: true,
       }}
       modules={[Pagination]}
-      className='h-[280px] sm:h-[480px]'
-    >
+      className='h-[280px] sm:h-[480px]'>
       {workSlides.slides.map((slide, i) => (
         <SwiperSlide key={i}>
           <div className='grid grid-cols-2 grid-rows-2 gap-4 cursor-pointer'>
@@ -68,9 +77,8 @@ const WorkSlider = () => {
               <Link
                 href={project.link}
                 target='_blank'
-                className='relative rounded-lg overflow-hidden flex items-center justify-center group '
-                key={i}
-              >
+                className='aspect-video relative rounded-lg overflow-hidden flex items-center justify-center group '
+                key={i}>
                 <div className='flex items-center justify-center relative overflow-hidden group'>
                   {/* project */}
                   <Image src={project.path} alt='slide image' width={500} height={300} />
