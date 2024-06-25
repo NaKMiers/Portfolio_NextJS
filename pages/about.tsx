@@ -4,7 +4,11 @@
 import { FaBootstrap, FaCss3, FaFigma, FaHtml5, FaJs, FaNodeJs, FaReact } from 'react-icons/fa'
 
 import {
+  SiAdobeillustrator,
   SiAdobephotoshop,
+  SiAdobepremierepro,
+  SiCsharp,
+  SiDotnet,
   SiExpress,
   SiFirebase,
   SiMongodb,
@@ -13,6 +17,7 @@ import {
   SiPug,
   SiRedux,
   SiTailwindcss,
+  SiTypescript,
 } from 'react-icons/si'
 
 import { BsFiletypeScss } from 'react-icons/bs'
@@ -76,13 +81,21 @@ const aboutData: AboutDataItem[] = [
           <FaReact key={11} />,
           <SiRedux key={12} />,
           <SiMui key={13} />,
-          <SiNextdotjs key={14} />,
-          <SiFirebase key={15} />,
+          <SiTypescript key={14} />,
+          <SiNextdotjs key={15} />,
+          <SiFirebase key={16} />,
+          <SiCsharp key={17} />,
+          <SiDotnet key={18} />,
         ],
       },
       {
         title: 'UI/UX Design',
-        icons: [<FaFigma key={16} />, <SiAdobephotoshop key={17} />],
+        icons: [
+          <FaFigma key={19} />,
+          <SiAdobephotoshop key={20} />,
+          <SiAdobeillustrator key={21} />,
+          <SiAdobepremierepro key={22} />,
+        ],
       },
     ],
   },
@@ -164,9 +177,8 @@ const About = () => {
             exit='hidden'
             className='max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0'
           >
-            4 years ago I discovered my passion for programming when I was a high school student and
-            from there I had to sacrifice many things to become a full stack developer at the age of
-            18.
+            4 years ago I discovered my passion for programming when I was a high school student and from
+            there I had to sacrifice many things to become a full stack developer at the age of 18.
           </motion.p>
 
           <motion.div
