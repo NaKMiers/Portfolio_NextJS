@@ -191,7 +191,7 @@ const About = () => {
             <div className='flex flex-1 xl:gap-x-6'>
               <div className='relative flex-1 after:w-px after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0'>
                 <div className='text-2xl xl:text-3xl font-extrabold text-accent mb-2'>
-                  <CountUp start={0} end={3} duration={5} /> +
+                  <CountUp start={0} end={4} duration={5} /> +
                 </div>
                 <div className='text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]'>
                   Years of experience
@@ -200,7 +200,7 @@ const About = () => {
 
               <div className='relative flex-1 after:w-px after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0'>
                 <div className='text-2xl xl:text-3xl font-extrabold text-accent mb-2'>
-                  <CountUp start={0} end={4000} duration={5} /> +
+                  <CountUp start={0} end={5500} duration={5} /> +
                 </div>
                 <div className='text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]'>
                   Hours Of Coding
@@ -209,7 +209,7 @@ const About = () => {
 
               <div className='relative flex-1 after:w-px after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0'>
                 <div className='text-2xl xl:text-3xl font-extrabold text-accent mb-2'>
-                  <CountUp start={0} end={50} duration={5} /> +
+                  <CountUp start={0} end={60} duration={5} /> +
                 </div>
                 <div className='text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]'>
                   Finished projects
