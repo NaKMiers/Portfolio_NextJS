@@ -1,11 +1,11 @@
-import { Swiper, SwiperSlide } from 'swiper/react'
+import Image from 'next/image'
+import Link from 'next/link'
 import { BsArrowRight } from 'react-icons/bs'
 import 'swiper/css'
 import 'swiper/css/free-mode'
 import 'swiper/css/pagination'
 import { Pagination } from 'swiper/modules'
-import Image from 'next/image'
-import Link from 'next/link'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 // data
 const workSlides = {
@@ -13,29 +13,34 @@ const workSlides = {
     {
       projects: [
         {
+          title: 'Mona Edu (My Shop)',
+          path: '/monaedu.jpg',
+          link: 'https://monaedu.com',
+        },
+        {
+          title: 'Anpha Shop (My Shop)',
+          path: '/anpha-shop.jpg',
+          link: 'http://anpha.shop',
+        },
+        {
           title: 'Educational Resources',
           path: '/ere.jpg',
           link: 'https://ere-eta.vercel.app',
-        },
-        {
-          title: 'Anpha Shop',
-          path: '/anpha-shop.jpg',
-          link: 'http://anpha.shop',
         },
         {
           title: 'Dream Vacations',
           path: '/dream-vacations.jpg',
           link: 'https://dream-vacations-01.netlify.app',
         },
-        {
-          title: 'Sonic Fiesta',
-          path: '/sonic-fiesta.jpg',
-          link: 'https://sonic-fiesta.netlify.app',
-        },
       ],
     },
     {
       projects: [
+        {
+          title: 'Digital Flow',
+          path: '/digital-flow.jpg',
+          link: 'https://digital-flow-01.netlify.app',
+        },
         {
           title: 'Street Slicer',
           path: '/street-slicer.jpg',
@@ -51,10 +56,14 @@ const workSlides = {
           path: '/exposio.jpg',
           link: 'https://exposio.netlify.app',
         },
+      ],
+    },
+    {
+      projects: [
         {
-          title: 'Digital Flow',
-          path: '/digital-flow.jpg',
-          link: 'https://digital-flow-01.netlify.app',
+          title: 'Sonic Fiesta',
+          path: '/sonic-fiesta.jpg',
+          link: 'https://sonic-fiesta.netlify.app',
         },
       ],
     },
@@ -69,7 +78,8 @@ const WorkSlider = () => {
         clickable: true,
       }}
       modules={[Pagination]}
-      className='h-[280px] sm:h-[480px]'>
+      className='h-[280px] sm:h-[480px]'
+    >
       {workSlides.slides.map((slide, i) => (
         <SwiperSlide key={i}>
           <div className='grid grid-cols-2 grid-rows-2 gap-4 cursor-pointer'>
@@ -78,7 +88,8 @@ const WorkSlider = () => {
                 href={project.link}
                 target='_blank'
                 className='aspect-video relative rounded-lg overflow-hidden flex items-center justify-center group '
-                key={i}>
+                key={i}
+              >
                 <div className='flex items-center justify-center relative overflow-hidden group'>
                   {/* project */}
                   <Image src={project.path} alt='slide image' width={500} height={300} />

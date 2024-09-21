@@ -30,8 +30,8 @@ const Work = () => {
               exit='hidden'
               className='mb-4 max-w-[400px] mx-auto lg:mx-0 z-10'
             >
-              Below are some of my outstanding projects. Includes many genres, travel, events,
-              branding, portfolio, and more.
+              Below are some of my outstanding projects. Includes many genres, e-commerce, travel,
+              events, branding, portfolio, and more.
             </motion.p>
           </div>
 
