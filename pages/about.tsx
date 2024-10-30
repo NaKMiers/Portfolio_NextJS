@@ -1,8 +1,22 @@
 'use client'
 
 // icons
-import { FaBootstrap, FaCss3, FaFigma, FaHtml5, FaJs, FaNodeJs, FaReact } from 'react-icons/fa'
-import { TbApi } from 'react-icons/tb'
+import {
+  FaBootstrap,
+  FaCss3,
+  FaFigma,
+  FaGithub,
+  FaGitSquare,
+  FaHtml5,
+  FaJira,
+  FaJs,
+  FaNodeJs,
+  FaReact,
+} from 'react-icons/fa'
+import { TbApi, TbSql } from 'react-icons/tb'
+import { IoLogoVercel } from 'react-icons/io5'
+import { BiLogoNetlify } from 'react-icons/bi'
+import { GrHeroku } from 'react-icons/gr'
 
 import {
   SiAdobeillustrator,
@@ -23,6 +37,7 @@ import {
   SiRedux,
   SiTailwindcss,
   SiTypescript,
+  SiVercel,
 } from 'react-icons/si'
 
 import { BsFiletypeScss } from 'react-icons/bs'
@@ -83,16 +98,16 @@ const aboutData: AboutDataItem[] = [
           <FaNodeJs key={7} title='NodeJS' />,
           <SiExpress key={8} title='ExpressJS' />,
           <SiMongodb key={9} title='MongoDB' />,
-          <SiPug key={10} title='Pug' />,
-          <FaReact key={11} title='ReactJS' />,
-          <SiRedux key={12} title='Redux' />,
-          <SiMui key={13} title='Material UI' />,
-          <SiTypescript key={14} title='TypeScript' />,
-          <SiNextdotjs key={15} title='NextJS' />,
-          <SiFirebase key={16} title='Firebase' />,
-          <SiCsharp key={17} title='C#' />,
-          <SiDotnet key={18} title='.NET' />,
-          <SiJirasoftware key={19} title='Jira' />,
+          <TbSql key={10} title='SQL' />,
+          <SiPug key={11} title='Pug' />,
+          <FaReact key={12} title='ReactJS' />,
+          <SiRedux key={13} title='Redux' />,
+          <SiMui key={14} title='Material UI' />,
+          <SiTypescript key={15} title='TypeScript' />,
+          <SiNextdotjs key={16} title='NextJS' />,
+          <SiFirebase key={17} title='Firebase' />,
+          <SiCsharp key={18} title='C#' />,
+          <SiDotnet key={19} title='.NET' />,
           <IoLogoAndroid key={20} title='Android' />,
           <TbApi key={21} title='APIs' />,
         ],
@@ -101,11 +116,27 @@ const aboutData: AboutDataItem[] = [
         title: 'UI/UX Design',
         icons: [
           <FaFigma key={22} title='Figma' />,
-          <SiCanva key={22} title='Canva' />,
-          <SiAdobephotoshop key={23} title='Adobe Photoshop' />,
-          <SiAdobeillustrator key={24} title='Adobe Illustrator' />,
-          <SiAdobepremierepro key={25} title='Adobe Premiere Pro' />,
-          <SiAdobexd key={26} title='Adobe XD' />,
+          <SiCanva key={23} title='Canva' />,
+          <SiAdobephotoshop key={24} title='Adobe Photoshop' />,
+          <SiAdobeillustrator key={25} title='Adobe Illustrator' />,
+          <SiAdobepremierepro key={26} title='Adobe Premiere Pro' />,
+          <SiAdobexd key={27} title='Adobe XD' />,
+        ],
+      },
+      {
+        title: 'Management',
+        icons: [
+          <FaGitSquare key={28} title='Git' />,
+          <FaGithub key={29} title='Github' />,
+          <SiJirasoftware key={30} title='Jira' />,
+        ],
+      },
+      {
+        title: 'Deployment',
+        icons: [
+          <SiVercel key={31} title='Vercel' />,
+          <BiLogoNetlify key={32} title='Netlify' size={26} />,
+          <GrHeroku key={33} title='Heroku' />,
         ],
       },
     ],

@@ -23,7 +23,7 @@ const Socials = () => {
       </Link>
       <Link
         target='_blank'
-        href='https://www.youtube.com/channel/UCmgkzDkx8EirOSBLLVm8B4Q'
+        href='https://www.youtube.com/@nguyenanhkhoa149'
         className='hover:text-accent transition-all duration-300'
       >
         <RiYoutubeLine />
