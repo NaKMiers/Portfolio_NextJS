@@ -9,7 +9,7 @@ const Header = () => {
           {/* logo */}
           <Link href='/'>
             <h1 className='text-nowrap text-[36px] text-white tracking-tighter'>
-              <span className='font-extrabold'>Anh</span> <span className='font-normal '>Khoa</span>{' '}
+              <span className='font-semibold'>Anh Khoa</span>{' '}
               <span className='text-accent font-bold'>.</span>
             </h1>
           </Link>

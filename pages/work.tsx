@@ -9,6 +9,8 @@ import { motion } from 'framer-motion'
 const Work = () => {
   return (
     <div className='h-full bg-primary/60 bg-gradient-to-r from-primary/10 py-36 flex items-center'>
+      <div className='opacity-40 scale-150 bg-left-top bg-cover origin-top-left bg-explosion bg-no-repeat w-screen h-screen fixed top-0' />
+
       <Circles />
 
       <div className='container mx-auto max-w-[1080px]'>
@@ -28,10 +30,19 @@ const Work = () => {
               initial='hidden'
               animate='show'
               exit='hidden'
-              className='mb-4 max-w-[400px] mx-auto lg:mx-0 z-10'
+              className='mb-4 max-w-[400px] mx-auto lg:mx-0 z-10 text-white/80'
             >
               Below are some of my outstanding projects. Includes many genres, e-commerce, travel,
               events, branding, portfolio, and more.
+            </motion.p>
+            <motion.p
+              variants={fadeIn('up', 0.4)}
+              initial='hidden'
+              animate='show'
+              exit='hidden'
+              className='mb-4 max-w-[400px] mx-auto lg:mx-0 z-10 text-white/80'
+            >
+              The first two are my E-Commerce businesses
             </motion.p>
           </div>
 

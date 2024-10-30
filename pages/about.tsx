@@ -2,11 +2,14 @@
 
 // icons
 import { FaBootstrap, FaCss3, FaFigma, FaHtml5, FaJs, FaNodeJs, FaReact } from 'react-icons/fa'
+import { TbApi } from 'react-icons/tb'
 
 import {
   SiAdobeillustrator,
   SiAdobephotoshop,
   SiAdobepremierepro,
+  SiAdobexd,
+  SiCanva,
   SiCsharp,
   SiDotnet,
   SiExpress,
@@ -29,6 +32,7 @@ import { useState } from 'react'
 import CountUp from 'react-countup'
 import Avatar from '../components/Avatar'
 import { fadeIn } from '../utils/variants'
+import { IoLogoAndroid } from 'react-icons/io5'
 
 type AboutDataItem = {
   title: string
@@ -70,34 +74,38 @@ const aboutData: AboutDataItem[] = [
       {
         title: 'Web Development',
         icons: [
-          <FaHtml5 key={1} />,
-          <FaCss3 key={2} />,
-          <FaJs key={3} />,
-          <BsFiletypeScss key={4} />,
-          <FaBootstrap key={5} />,
-          <SiTailwindcss key={6} />,
-          <FaNodeJs key={7} />,
-          <SiExpress key={8} />,
-          <SiMongodb key={9} />,
-          <SiPug key={10} />,
-          <FaReact key={11} />,
-          <SiRedux key={12} />,
-          <SiMui key={13} />,
-          <SiTypescript key={14} />,
-          <SiNextdotjs key={15} />,
-          <SiFirebase key={16} />,
-          <SiCsharp key={17} />,
-          <SiDotnet key={18} />,
-          <SiJirasoftware key={14} />,
+          <FaHtml5 key={1} title='HTML5' />,
+          <FaCss3 key={2} title='CSS3' />,
+          <FaJs key={3} title='JavaScript' />,
+          <BsFiletypeScss key={4} title='SCSS' />,
+          <FaBootstrap key={5} title='Bootstrap' />,
+          <SiTailwindcss key={6} title='Tailwindcss' />,
+          <FaNodeJs key={7} title='NodeJS' />,
+          <SiExpress key={8} title='ExpressJS' />,
+          <SiMongodb key={9} title='MongoDB' />,
+          <SiPug key={10} title='Pug' />,
+          <FaReact key={11} title='ReactJS' />,
+          <SiRedux key={12} title='Redux' />,
+          <SiMui key={13} title='Material UI' />,
+          <SiTypescript key={14} title='TypeScript' />,
+          <SiNextdotjs key={15} title='NextJS' />,
+          <SiFirebase key={16} title='Firebase' />,
+          <SiCsharp key={17} title='C#' />,
+          <SiDotnet key={18} title='.NET' />,
+          <SiJirasoftware key={19} title='Jira' />,
+          <IoLogoAndroid key={20} title='Android' />,
+          <TbApi key={21} title='APIs' />,
         ],
       },
       {
         title: 'UI/UX Design',
         icons: [
-          <FaFigma key={19} />,
-          <SiAdobephotoshop key={20} />,
-          <SiAdobeillustrator key={21} />,
-          <SiAdobepremierepro key={22} />,
+          <FaFigma key={22} title='Figma' />,
+          <SiCanva key={22} title='Canva' />,
+          <SiAdobephotoshop key={23} title='Adobe Photoshop' />,
+          <SiAdobeillustrator key={24} title='Adobe Illustrator' />,
+          <SiAdobepremierepro key={25} title='Adobe Premiere Pro' />,
+          <SiAdobexd key={26} title='Adobe XD' />,
         ],
       },
     ],
@@ -106,16 +114,12 @@ const aboutData: AboutDataItem[] = [
     title: 'experience',
     info: [
       {
-        title: 'Full Stack Developer - Upwork - ',
-        stage: '2022 - Present',
-      },
-      {
-        title: 'Full Stack Developer - Fiverr - ',
-        stage: '2022 - Present',
-      },
-      {
         title: 'HUFLIT University Student - HUFLIT - ',
         stage: '2022 - Present',
+      },
+      {
+        title: 'Running E-Commerce Businesses - ',
+        stage: '2023 - Present',
       },
     ],
   },
@@ -152,6 +156,8 @@ const About = () => {
 
   return (
     <div className='min-h-screen xl:pb-0 bg-primary/60 bg-gradient-to-r from-primary/10 py-32 text-center xl:text-left'>
+      <div className='opacity-40 scale-150 bg-[55%] bg-cover origin-bottom bg-explosion bg-no-repeat w-screen h-screen fixed top-0' />
+
       <motion.div
         variants={fadeIn('right', 0.2)}
         initial='hidden'
@@ -162,7 +168,7 @@ const About = () => {
         <Avatar />
       </motion.div>
 
-      <div className='container mx-auto h-full flex flex-col items-center xl:flex-row xl:items-start gap-x-6 max-w-[1080px]'>
+      <div className='relative z-10 container mx-auto h-full flex flex-col items-center xl:flex-row xl:items-start gap-x-6 max-w-[1080px]'>
         <div className='w-full xl:w-[55%] flex flex-col justify-center'>
           <motion.h2
             variants={fadeIn('right', 0.2)}
@@ -178,10 +184,11 @@ const About = () => {
             initial='hidden'
             animate='show'
             exit='hidden'
-            className='max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0'
+            className='max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0 text-white/80'
           >
-            4 years ago I discovered my passion for programming when I was a high school student and from
-            there I had to sacrifice many things to become a full stack developer at the age of 18.
+            {new Date().getFullYear() - 2019} years ago I discovered my passion for programming when I
+            was a high school student and from there I had to sacrifice many things to become a full
+            stack developer at the age of 18.
           </motion.p>
 
           <motion.div
@@ -203,7 +210,7 @@ const About = () => {
 
               <div className='relative flex-1 after:w-px after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0'>
                 <div className='text-2xl xl:text-3xl font-extrabold text-accent mb-2'>
-                  <CountUp start={0} end={5500} duration={5} /> +
+                  <CountUp start={0} end={5600} duration={5} /> +
                 </div>
                 <div className='text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]'>
                   Hours Of Coding
@@ -212,7 +219,7 @@ const About = () => {
 
               <div className='relative flex-1 after:w-px after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0'>
                 <div className='text-2xl xl:text-3xl font-extrabold text-accent mb-2'>
-                  <CountUp start={0} end={60} duration={5} /> +
+                  <CountUp start={0} end={61} duration={5} /> +
                 </div>
                 <div className='text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]'>
                   Finished projects
@@ -236,7 +243,7 @@ const About = () => {
           initial='hidden'
           animate='show'
           exit='hidden'
-          className='flex flex-col w-full xl:w-[45%] max-w-[500px] overflow-scroll no-scrollbar'
+          className='flex flex-col w-full xl:w-[45%] max-w-[500px] overflow-scroll no-scrollbar relative z-10'
         >
           <div className='flex gap-x-4 xl:gap-x-8 mx-auto xl:mx-0 mb-4'>
             {aboutData.map((item, itemIndex) => (
@@ -255,7 +262,7 @@ const About = () => {
           <div className='py-2 xl:py-6 flex flex-col gap-y-2 xl:gap-y-4 items-center xl:items-start'>
             {aboutData[index].info.map((item, i) => (
               <div
-                className='flex-1 flex flex-col md:flex-row mx-w-max gap-x-2 items-center text-white/60'
+                className='flex-1 flex flex-col md:flex-row mx-w-max gap-x-2 items-center text-white/90'
                 key={i}
               >
                 <div className='font-light mb-2 md:mb-0'>{item.title}</div>

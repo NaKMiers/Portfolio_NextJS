@@ -10,8 +10,11 @@ import {} from 'react-icons/rx'
 const Services = () => {
   return (
     <div className='min-h-screen bg-primary/60 bg-gradient-to-r from-primary/10 py-36 flex items-center overflow-x-hidden w-'>
+      <div className='opacity-40 scale-150 bg-[55%] bg-cover origin-top bg-explosion bg-no-repeat w-screen h-screen fixed top-0' />
+
       <Circles />
-      <div className='container mx-auto max-w-[1080px]'>
+
+      <div className='relative z-10 container mx-auto max-w-[1080px]'>
         <div className='flex flex-col xl:flex-row gap-x-8'>
           <div className='text-center flex flex-col xl:w-[30vw] lg:text-left mb-4 xl:mb-0'>
             <motion.h2
@@ -21,7 +24,7 @@ const Services = () => {
               exit='hidden'
               className='h2 mt-10 xl:mt-0 z-10'
             >
-              My services <span className='text-accent'>.</span>
+              My services
             </motion.h2>
             <motion.div
               variants={fadeIn('up', 0.4)}
@@ -38,7 +41,8 @@ const Services = () => {
                 <li>Performance Optimization</li>
                 <li>Custom Website By Demand</li>
                 <li>Making E-Commerce & Portfolio Websites</li>
-                <li>AI Intergrated Web Application</li>
+                <li>APIs Integration</li>
+                <li>AI Integrated Web Application</li>
                 <li>...</li>
               </ul>
             </motion.div>

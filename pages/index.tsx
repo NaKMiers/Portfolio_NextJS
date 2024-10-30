@@ -40,7 +40,7 @@ const Home = () => {
             className='max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16 z-10'
           >
             I help designers, businesses and startups bring their ideas to life. Powered by passion,
-            dream and coffee.
+            dream and milo.
           </motion.p>
 
           <div className='flex justify-center xl:hidden relative z-10'>
@@ -59,10 +59,7 @@ const Home = () => {
       </div>
 
       <div className='w-full h-full absolute right-0 bottom-0'>
-        <div
-          style={{ backgroundSize: '138%', backgroundPosition: '0 center' }}
-          className='opacity-50 bg-none xl:bg-explosion xl:bg-cover xl:bg-right xl:bg-no-repeat w-full h-screen absolute mix-blend-color-dodge'
-        />
+        <div className='opacity-50 bg-cover bg-[56%] bg-explosion bg-no-repeat w-screen h-screen absolute' />
 
         <ParticlesContainer />
 
@@ -72,7 +69,7 @@ const Home = () => {
           animate='show'
           exit='hidden'
           transition={{ duration: 1, ease: 'easeInOut' }}
-          className='max-w-[600px] absolute lg:bottom-0 lg:right-[5%] select-none'
+          className='max-w-[700px] absolute lg:bottom-0 lg:right-[0%] select-none'
         >
           <Avatar />
         </motion.div>

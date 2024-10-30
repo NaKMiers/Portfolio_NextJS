@@ -18,8 +18,7 @@ const serviceData = [
   {
     icon: <IoCodeSlash />,
     title: 'Back-end',
-    description:
-      'Back-end architect for robust, scalable server solutions and seamless functionality.',
+    description: 'Back-end architect for robust, scalable server solutions and seamless functionality.',
   },
   {
     icon: <BsCartCheck />,
@@ -34,8 +33,8 @@ const serviceData = [
   },
   {
     icon: <LuBrainCircuit />,
-    title: 'AI Intergration',
-    description: 'AI Integration for smarter systems and improved efficiency.',
+    title: 'APIs Integration',
+    description: 'APIs Integration for smarter systems and improved efficiency.',
   },
 ]
 
@@ -61,7 +60,7 @@ const ServiceSlider = () => {
     >
       {serviceData.map((item, i) => (
         <SwiperSlide key={i}>
-          <div className='bg-[rgba(65,49,123,0.15)] min-h-[300px] h-max rounded-lg px-6 py-8 flex flex-col gap-x-6 sm:gap-x-0 group cursor-pointer hover:bg-[rgba(89,65,169,0.15)] transition-all duration-300'>
+          <div className='bg-[rgba(65,49,123,0.4)] min-h-[300px] h-max rounded-lg px-6 py-8 flex flex-col gap-x-6 sm:gap-x-0 group cursor-pointer hover:bg-[rgba(89,65,169,0.4)] transition-all duration-300'>
             {/* icon */}
             <div className='text-4xl text-accent mb-4'>{item.icon}</div>
 

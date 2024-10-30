@@ -1,10 +1,10 @@
 'use client'
 
 import axios from 'axios'
-import { fadeIn } from '../utils/variants'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { BsArrowRight } from 'react-icons/bs'
+import { fadeIn } from '../utils/variants'
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -34,7 +34,9 @@ const Contact = () => {
 
   return (
     <div className='min-h-screen bg-primary/60 bg-gradient-to-r from-primary/10'>
-      <div className='container mx-auto py-32 text-center xl:text-left flex items-center justify-center h-full'>
+      <div className='opacity-40 bg-[55%] bg-cover  bg-explosion bg-no-repeat w-screen h-screen fixed top-0' />
+
+      <div className='relative z-10 container mx-auto py-32 text-center xl:text-left flex items-center justify-center h-full'>
         {/* text & form */}
         <div className='flex flex-col w-full max-w-[700px]'>
           {/* text */}
@@ -101,7 +103,7 @@ const Contact = () => {
               value={form.message}
             />
 
-            <button className='btn rounded-full border border-white/50 max-w-[170px] px-8 transiton-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group'>
+            <button className='btn rounded-full border border-white/80 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group'>
               <span className='group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500'>
                 Let&apos;s talk
               </span>
