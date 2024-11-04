@@ -48,6 +48,7 @@ import CountUp from 'react-countup'
 import Avatar from '../components/Avatar'
 import { fadeIn } from '../utils/variants'
 import { IoLogoAndroid } from 'react-icons/io5'
+import Link from 'next/link'
 
 type AboutDataItem = {
   title: string
@@ -55,6 +56,7 @@ type AboutDataItem = {
     title: string
     icons?: React.ReactNode[]
     stage?: string
+    link?: string
   }[]
 }
 
@@ -160,23 +162,28 @@ const aboutData: AboutDataItem[] = [
       {
         title: 'HTML - CSS - F8 - ',
         stage: '2022',
+        link: 'https://fullstack.edu.vn/cert/i9dhj',
       },
       {
         title: 'Responsive Web Design - ',
         stage: '2022',
+        link: 'https://fullstack.edu.vn/cert/lrmyc',
       },
       {
         title: 'JavaScript Basic - F8 - ',
         stage: '2022',
+        link: 'https://fullstack.edu.vn/cert/wf0v8',
       },
       {
         title: 'JavaScript Advanced - F8 - ',
         stage: '2022',
+        link: 'https://fullstack.edu.vn/cert/5hnbq',
       },
 
       {
         title: 'WPS Certification - Ratatype - ',
         stage: '2023',
+        link: 'https://www.ratatype.com/u5710910/certificate-list',
       },
     ],
   },
@@ -296,8 +303,22 @@ const About = () => {
                 className='flex-1 flex flex-col md:flex-row mx-w-max gap-x-2 items-center text-white/90'
                 key={i}
               >
-                <div className='font-light mb-2 md:mb-0'>{item.title}</div>
-                <div className=''>{item.stage}</div>
+                {!item.link ? (
+                  <>
+                    <div className='font-light mb-2 md:mb-0'>{item.title}</div>
+                    <div className=''>{item.stage}</div>
+                  </>
+                ) : (
+                  <Link
+                    href={item.link}
+                    target='_blank'
+                    className='flex text-sky-300 hover:underline underline-offset-2'
+                  >
+                    <div className='font-light mb-2 md:mb-0'>
+                      {item.title} {item.stage}
+                    </div>
+                  </Link>
+                )}
                 <div className='flex gap-x-4 gap-y-2 justify-center flex-wrap max-w-[350px]'>
                   {item.icons?.map((icon, i) => (
                     <div className='text-2xl text-white' key={i}>
