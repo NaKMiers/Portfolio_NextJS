@@ -13,12 +13,17 @@ const workSlides = {
     {
       projects: [
         {
-          title: 'Mona Edu (My Shop)',
+          title: 'Deewas',
+          path: '/deewas.png',
+          link: 'https://apps.apple.com/app/deewas/id6745058784',
+        },
+        {
+          title: 'Mona Edu',
           path: '/monaedu.jpg',
           link: 'https://monaedu.com',
         },
         {
-          title: 'Anpha Shop (My Shop)',
+          title: 'Anpha Shop',
           path: '/anpha-shop.jpg',
           link: 'http://anpha.shop',
         },
@@ -27,15 +32,15 @@ const workSlides = {
           path: '/ere.jpg',
           link: 'https://ere-eta.vercel.app',
         },
+      ],
+    },
+    {
+      projects: [
         {
           title: 'Dream Vacations',
           path: '/dream-vacations.jpg',
           link: 'https://dream-vacations-01.netlify.app',
         },
-      ],
-    },
-    {
-      projects: [
         {
           title: 'Digital Flow',
           path: '/digital-flow.jpg',
@@ -51,11 +56,6 @@ const workSlides = {
           path: '/pixel-chip.jpg',
           link: 'https://pixel-chic.netlify.app',
         },
-        {
-          title: 'Exposio',
-          path: '/exposio.jpg',
-          link: 'https://exposio.netlify.app',
-        },
       ],
     },
     {
@@ -64,6 +64,11 @@ const workSlides = {
           title: 'Sonic Fiesta',
           path: '/sonic-fiesta.jpg',
           link: 'https://sonic-fiesta.netlify.app',
+        },
+        {
+          title: 'Exposio',
+          path: '/exposio.jpg',
+          link: 'https://exposio.netlify.app',
         },
       ],
     },

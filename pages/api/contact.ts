@@ -14,7 +14,7 @@ function sendMail(to: string, subject: string, html: string) {
   console.log(html)
 
   transporter.sendMail({
-    from: 'Portfolio',
+    from: 'Portfolio <no-reply@anhkhoa.site>',
     to: to,
     subject: subject,
     html: html,
@@ -32,9 +32,10 @@ export default async function handler(req: any, res: any) {
         subject || 'Portfolio',
         `
           <div>
+            <h1>Portfolio: anhkhoa.site</h1>
             <p>From: ${email}</p>
             <p>Name: ${firstname} ${lastname}</p>
-            <p>Content: ${message}</p>
+            <p>Message: ${message}</p>
           </div>
         `
       )

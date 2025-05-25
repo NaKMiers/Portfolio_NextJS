@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { HiArrowDown, HiArrowRight } from 'react-icons/hi2'
+import { HiArrowRight } from 'react-icons/hi2'
 
 const ProjectsBtn = () => {
   return (
@@ -19,7 +19,7 @@ const ProjectsBtn = () => {
         <HiArrowRight className='absolute text-4xl group-hover:translate-x-2 transition-all duration-300' />
       </Link>
 
-      <a
+      {/* <a
         href='/my-cv.pdf'
         target='_blank'
         className='relative w-[185px] h-[185px] flex justify-center items-center bg-circleStar bg-cover bg-center bg-no-repeat group'
@@ -32,7 +32,7 @@ const ProjectsBtn = () => {
           height={160}
         />
         <HiArrowDown className='absolute text-4xl group-hover:translate-y-2 transition-all duration-300' />
-      </a>
+      </a> */}
     </div>
   )
 }

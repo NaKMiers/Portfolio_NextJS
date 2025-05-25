@@ -1,6 +1,7 @@
 'use client'
 
 // icons
+import { BiLogoNetlify } from 'react-icons/bi'
 import {
   FaBootstrap,
   FaCss3,
@@ -8,15 +9,12 @@ import {
   FaGithub,
   FaGitSquare,
   FaHtml5,
-  FaJira,
   FaJs,
   FaNodeJs,
   FaReact,
 } from 'react-icons/fa'
-import { TbApi, TbSql } from 'react-icons/tb'
-import { IoLogoVercel } from 'react-icons/io5'
-import { BiLogoNetlify } from 'react-icons/bi'
 import { GrHeroku } from 'react-icons/gr'
+import { TbApi, TbBrandReactNative, TbSql } from 'react-icons/tb'
 
 import {
   SiAdobeillustrator,
@@ -26,9 +24,9 @@ import {
   SiCanva,
   SiCsharp,
   SiDotnet,
+  SiExpo,
   SiExpress,
   SiFirebase,
-  SiJira,
   SiJirasoftware,
   SiMongodb,
   SiMui,
@@ -43,12 +41,12 @@ import {
 import { BsFiletypeScss } from 'react-icons/bs'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { useState } from 'react'
 import CountUp from 'react-countup'
+import { IoLogoAndroid } from 'react-icons/io5'
 import Avatar from '../components/Avatar'
 import { fadeIn } from '../utils/variants'
-import { IoLogoAndroid } from 'react-icons/io5'
-import Link from 'next/link'
 
 type AboutDataItem = {
   title: string
@@ -62,26 +60,17 @@ type AboutDataItem = {
 
 const aboutData: AboutDataItem[] = [
   {
-    title: 'READ FIRST',
+    title: 'About Me',
     info: [
       {
-        title: 'Things only I do for my clients:',
+        title: `
+        I'm Anh Khoa Nguyen. My passion for Information Technology began at a young age, and I officially started pursuing the field when I was 14. Since then, I've completed dozens of projects and gained hands-on experience with various frameworks, specializing in web and mobile app development. I'm also passionate about entrepreneurship and enjoy turning my software products into sources of income. Some of my websites and apps are already generating revenue on online platforms and the App Store. For me, IT isn't just a career - it's a part of who I am.`,
       },
       {
-        title:
-          '1️⃣ Great effort. I am willing to spend 80% of my day researching problems and solutions to help you get the best product possible',
+        title: `I’m independent, self-motivated, and open-minded, always eager to learn and embrace innovation. I have strong self-learning skills, effective communication, and thrive in team environments. I'm highly responsible and committed to the work I do.`,
       },
       {
-        title:
-          '2️⃣ I am not the type to wait until the end of the shift to shut down the laptop. Working extra hours to help my clients get what they are looking for is my happiness.',
-      },
-      {
-        title:
-          '3️⃣ Sincere, attitude and creating good relationships with clients are the top criteria in my work',
-      },
-      {
-        title:
-          '4️⃣ And I am willing to give you your money back if you are disappointed with my results. For me, satisfactions are more important than money',
+        title: `My friends often say, “I love working with Anh Khoa because his projects always feel different - and I never have to worry about the quality.”`,
       },
     ],
   },
@@ -91,74 +80,85 @@ const aboutData: AboutDataItem[] = [
       {
         title: 'Web Development',
         icons: [
-          <FaHtml5 key={1} title='HTML5' />,
-          <FaCss3 key={2} title='CSS3' />,
-          <FaJs key={3} title='JavaScript' />,
-          <BsFiletypeScss key={4} title='SCSS' />,
-          <FaBootstrap key={5} title='Bootstrap' />,
-          <SiTailwindcss key={6} title='Tailwindcss' />,
-          <FaNodeJs key={7} title='NodeJS' />,
-          <SiExpress key={8} title='ExpressJS' />,
-          <SiMongodb key={9} title='MongoDB' />,
-          <TbSql key={10} title='SQL' />,
-          <SiPug key={11} title='Pug' />,
-          <FaReact key={12} title='ReactJS' />,
-          <SiRedux key={13} title='Redux' />,
-          <SiMui key={14} title='Material UI' />,
-          <SiTypescript key={15} title='TypeScript' />,
-          <SiNextdotjs key={16} title='NextJS' />,
-          <SiFirebase key={17} title='Firebase' />,
-          <SiCsharp key={18} title='C#' />,
-          <SiDotnet key={19} title='.NET' />,
-          <IoLogoAndroid key={20} title='Android' />,
-          <TbApi key={21} title='APIs' />,
+          [<FaNodeJs key={0} title='NodeJS' />, 'NodeJS'],
+          [<SiNextdotjs key={0} title='NextJS' />, 'NextJS'],
+          [<FaReact key={0} title='ReactJS' />, 'ReactJS'],
+          [<SiExpress key={0} title='ExpressJS' />, 'ExpressJS'],
+          [<SiMongodb key={0} title='MongoDB' />, 'MongoDB'],
+          [<FaHtml5 key={0} title='HTML5' />, 'HTML'],
+          [<TbSql key={0} title='SQL' />, 'SQL'],
+          [<FaJs key={0} title='JavaScript' />, 'JavaScript'],
+          [<SiTypescript key={0} title='TypeScript' />, 'TypeScript'],
+          [<FaCss3 key={0} title='CSS3' />, 'CSS3'],
+          [<BsFiletypeScss key={0} title='SCSS' />, 'SCSS'],
+          [<FaBootstrap key={0} title='Bootstrap' />, 'Bootstrap'],
+          [<SiTailwindcss key={0} title='Tailwindcss' />, 'Tailwindcss'],
+          [<SiPug key={0} title='Pug' />, 'Pug'],
+          [<SiRedux key={0} title='Redux' />, 'Redux'],
+          [<SiMui key={0} title='Material UI' />, 'UI'],
+          [<SiFirebase key={0} title='Firebase' />, 'Firebase'],
+          [<SiCsharp key={0} title='C#' />, 'C#'],
+          [<SiDotnet key={0} title='.NET' />, '.NET'],
+          [<IoLogoAndroid key={0} title='Android' />, 'Android'],
+          [<TbApi key={0} title='APIs' />, 'APIs'],
+        ],
+      },
+      {
+        title: 'Mobile Development',
+        icons: [
+          [<TbBrandReactNative key={0} title='React Native' />, 'React Native'],
+          [<SiExpo key={0} title='Expo' />, 'Expo'],
         ],
       },
       {
         title: 'UI/UX Design',
         icons: [
-          <FaFigma key={22} title='Figma' />,
-          <SiCanva key={23} title='Canva' />,
-          <SiAdobephotoshop key={24} title='Adobe Photoshop' />,
-          <SiAdobeillustrator key={25} title='Adobe Illustrator' />,
-          <SiAdobepremierepro key={26} title='Adobe Premiere Pro' />,
-          <SiAdobexd key={27} title='Adobe XD' />,
+          [<FaFigma key={0} title='Figma' />, 'Figma'],
+          [<SiCanva key={0} title='Canva' />, 'Canva'],
+          [<SiAdobephotoshop key={0} title='Adobe Photoshop' />, 'Adobe Photoshop'],
+          [<SiAdobeillustrator key={0} title='Adobe Illustrator' />, 'Adobe Illustrator'],
+          [<SiAdobepremierepro key={0} title='Adobe Premiere Pro' />, 'Adobe Premiere Pro'],
+          [<SiAdobexd key={0} title='Adobe XD' />, 'Adobe XD'],
         ],
       },
       {
         title: 'Management',
         icons: [
-          <FaGitSquare key={28} title='Git' />,
-          <FaGithub key={29} title='Github' />,
-          <SiJirasoftware key={30} title='Jira' />,
+          [<FaGitSquare key={0} title='Git' />, 'Git'],
+          [<FaGithub key={0} title='Github' />, 'Github'],
+          [<SiJirasoftware key={0} title='Jira' />, 'Jira'],
         ],
       },
       {
         title: 'Deployment',
         icons: [
-          <SiVercel key={31} title='Vercel' />,
-          <BiLogoNetlify key={32} title='Netlify' size={26} />,
-          <GrHeroku key={33} title='Heroku' />,
+          [<SiVercel key={0} title='Vercel' />, 'Vercel'],
+          [<BiLogoNetlify key={0} title='Netlify' size={26} />, 'Netlify'],
+          [<GrHeroku key={0} title='Heroku' />, 'Heroku'],
         ],
       },
     ],
   },
   {
-    title: 'experience',
+    title: 'Education',
     info: [
       {
-        title: 'HUFLIT University Student - HUFLIT - ',
+        title: 'Ho Chi Minh City University of Foreign Language And Information Technology (HUFLIT)',
         stage: '2022 - Present',
       },
       {
-        title: 'Running E-Commerce Businesses - ',
-        stage: '2023 - Present',
+        title: 'VUS English Center',
+        stage: '2022 - 2023',
       },
     ],
   },
   {
-    title: 'Certificate',
+    title: 'Certificates',
     info: [
+      {
+        title: 'TOEIC (780/990) - Issued by IIG Vietnam - ',
+        stage: '2025',
+      },
       {
         title: 'HTML - CSS - F8 - ',
         stage: '2022',
@@ -248,7 +248,7 @@ const About = () => {
 
               <div className='relative flex-1 after:w-px after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0'>
                 <div className='text-2xl xl:text-3xl font-extrabold text-accent mb-2'>
-                  <CountUp start={0} end={5500} duration={5} /> +
+                  <CountUp start={0} end={5800} duration={5} /> +
                 </div>
                 <div className='text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]'>
                   Hours Of Coding
@@ -257,7 +257,7 @@ const About = () => {
 
               <div className='relative flex-1 after:w-px after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0'>
                 <div className='text-2xl xl:text-3xl font-extrabold text-accent mb-2'>
-                  <CountUp start={0} end={38} duration={5} /> +
+                  <CountUp start={0} end={42} duration={5} /> +
                 </div>
                 <div className='text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]'>
                   Finished projects
@@ -291,7 +291,7 @@ const About = () => {
                   'text-accent after:w-[100%] after:bg-sky-500 after:transition-all after:duration-300'
                 } cursor-pointer capitalize xl:text-lg relative after:w-8 after:h-[2px] after:bg-white after:absolute after:-bottom-1 after:left-0`}
                 onClick={() => setIndex(itemIndex)}
-                key={itemIndex}
+                key={0}
               >
                 {item.title}
               </div>
@@ -300,13 +300,13 @@ const About = () => {
           <div className='py-2 xl:py-6 flex flex-col gap-y-2 xl:gap-y-4 items-center xl:items-start'>
             {aboutData[index].info.map((item, i) => (
               <div
-                className='flex-1 flex flex-col md:flex-row mx-w-max gap-x-2 items-center text-white/90'
-                key={i}
+                className='flex-1 flex flex-col md:flex-row mx-w-max gap-x-2 items-start text-white/90'
+                key={0}
               >
                 {!item.link ? (
                   <>
                     <div className='font-light mb-2 md:mb-0'>{item.title}</div>
-                    <div className=''>{item.stage}</div>
+                    <div className='flex-shrink-0'>{item.stage}</div>
                   </>
                 ) : (
                   <Link
@@ -319,10 +319,13 @@ const About = () => {
                     </div>
                   </Link>
                 )}
-                <div className='flex gap-x-4 gap-y-2 justify-center flex-wrap max-w-[350px]'>
-                  {item.icons?.map((icon, i) => (
-                    <div className='text-2xl text-white' key={i}>
-                      {icon}
+                <div className='flex gap-x-4 gap-y-2 flex-wrap max-w-[350px]'>
+                  {item.icons?.map((icon: any, i) => (
+                    <div
+                      className='text-2xl flex flex-col border p-2 rounded-md shadow-md gap-1 items-center text-white'
+                      key={0}
+                    >
+                      {icon[0]} <span className='text-xs'>{icon[1]}</span>
                     </div>
                   ))}
                 </div>

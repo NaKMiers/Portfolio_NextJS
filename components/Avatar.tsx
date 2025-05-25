@@ -2,9 +2,9 @@ import Image from 'next/image'
 
 const Avatar = () => {
   return (
-    <div className='hidden xl:flex xl:max-w-none'>
+    <div className='hidden xl:flex '>
       <Image
-        className='translate-z-0 w-full h-full'
+        className='w-full h-full'
         src='/avatar.png'
         alt='avatar'
         width={1024}

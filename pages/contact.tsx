@@ -27,6 +27,8 @@ const Contact = () => {
         subject: '',
         message: '',
       })
+
+      alert('Thank you for your message! I will get back to you soon.')
     } catch (err: any) {
       console.log(err)
     }

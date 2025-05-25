@@ -1,5 +1,5 @@
 import { BsCartCheck } from 'react-icons/bs'
-import { IoCode, IoCodeSlash } from 'react-icons/io5'
+import { IoCode, IoCodeSlash, IoPhonePortrait, IoPhonePortraitSharp } from 'react-icons/io5'
 import { LuBrainCircuit } from 'react-icons/lu'
 import { RxArrowTopRight, RxReader } from 'react-icons/rx'
 import 'swiper/css'
@@ -21,15 +21,19 @@ const serviceData = [
     description: 'Back-end architect for robust, scalable server solutions and seamless functionality.',
   },
   {
+    icon: <IoPhonePortraitSharp />,
+    title: 'Mobile',
+    description: 'Mobile developer building responsive apps for iOS & Android.',
+  },
+  {
     icon: <BsCartCheck />,
     title: 'E-Commerce',
-    description:
-      'E-Commerce expert crafting secure, efficient online platforms for seamless transactions.',
+    description: 'E-commerce expert building secure, efficient platforms for smooth transactions.',
   },
   {
     icon: <RxReader />,
     title: 'Portfolio',
-    description: 'Portfolio specialist showcasing skills, experience, and achievements concisely.',
+    description: 'Portfolio specialist highlighting skills and achievements clearly.',
   },
   {
     icon: <LuBrainCircuit />,

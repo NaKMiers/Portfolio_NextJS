@@ -25,7 +25,7 @@ const Home = () => {
               </span>
               <br />
               <TypeAnimation
-                sequence={['Anh Khoa Nguyen', 1500, 'a Fullstack Developer', 1000]}
+                sequence={['Anh Khoa Nguyen', 1500, 'an IT student', 1000, 'NaKMiers', 1000]}
                 speed={50}
                 repeat={Infinity}
               />
@@ -69,7 +69,7 @@ const Home = () => {
           animate='show'
           exit='hidden'
           transition={{ duration: 1, ease: 'easeInOut' }}
-          className='max-w-[640px] absolute lg:bottom-0 lg:right-[0%] select-none'
+          className='max-w-[640px] w-full absolute lg:bottom-0 lg:right-[0%] select-none'
         >
           <Avatar />
         </motion.div>

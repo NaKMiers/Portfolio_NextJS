@@ -2,14 +2,13 @@ import Link from 'next/link'
 import { FaGithub } from 'react-icons/fa'
 
 import {
-  RiBehanceLine,
-  RiDribbbleLine,
   RiFacebookLine,
   RiInstagramLine,
+  RiLinkedinBoxFill,
   RiPinterestLine,
   RiYoutubeLine,
 } from 'react-icons/ri'
-import { SiNpm, SiZalo } from 'react-icons/si'
+import { SiZalo } from 'react-icons/si'
 
 const Socials = () => {
   return (
@@ -18,43 +17,57 @@ const Socials = () => {
         target='_blank'
         href='https://github.com/NaKMiers'
         className='hover:text-accent transition-all duration-300'
+        title='GitHub'
       >
-        <FaGithub />
+        <FaGithub size={24} />
+      </Link>
+      <Link
+        target='_blank'
+        href='https://www.linkedin.com/in/anh-khoa-nguyen-9539381a9'
+        className='hover:text-accent transition-all duration-300'
+        title='LinkedIn'
+      >
+        <RiLinkedinBoxFill size={24} />
       </Link>
       <Link
         target='_blank'
         href='https://www.youtube.com/@nguyenanhkhoa149'
         className='hover:text-accent transition-all duration-300'
+        title='YouTube'
       >
-        <RiYoutubeLine />
+        <RiYoutubeLine size={24} />
       </Link>
       <Link
         target='_blank'
         href='https://www.instagram.com/pipix149'
         className='hover:text-accent transition-all duration-300'
+        title='Instagram'
       >
-        <RiInstagramLine />
+        <RiInstagramLine size={24} />
       </Link>
       <Link
         target='_blank'
         href='https://www.facebook.com/pipix149'
         className='hover:text-accent transition-all duration-300'
+        title='Facebook'
       >
-        <RiFacebookLine />
+        <RiFacebookLine size={24} />
       </Link>
       <Link
         target='_blank'
         href='https://www.pinterest.com/nakmiers'
         className='hover:text-accent transition-all duration-300'
+        title='Pinterest'
       >
-        <RiPinterestLine />
+        <RiPinterestLine size={24} />
       </Link>
       <Link
         target='_blank'
         href='https://zalo.me/0899320427'
         className='hover:text-accent text-2xl transition-all duration-300'
+        title='Zalo'
       >
-        <SiZalo />
+        <SiZalo size={28} />
       </Link>
     </div>
   )
