@@ -10,10 +10,10 @@ const transporter = nodeMailer.createTransport({
   },
 })
 
-function sendMail(to: string, subject: string, html: string) {
+async function sendMail(to: string, subject: string, html: string) {
   console.log(html)
 
-  transporter.sendMail({
+  await transporter.sendMail({
     from: 'Portfolio <no-reply@anhkhoa.site>',
     to: to,
     subject: subject,
@@ -27,7 +27,7 @@ export default async function handler(req: any, res: any) {
       const { email, firstname, lastname, subject, message } = req.body
       console.log(req.body)
 
-      sendMail(
+      await sendMail(
         process.env.MAIL_TO!,
         subject || 'Portfolio',
         `
