@@ -23,6 +23,20 @@ const workSlides = {
           link: 'https://monaedu.com',
         },
         {
+          title: 'Digital Flow',
+          path: '/digital-flow.jpg',
+          link: 'https://digital-flow-01.netlify.app',
+        },
+        {
+          title: 'Dream Vacations',
+          path: '/dream-vacations.jpg',
+          link: 'https://dream-vacations-01.netlify.app',
+        },
+      ],
+    },
+    {
+      projects: [
+        {
           title: 'Anpha Shop',
           path: '/anpha-shop.jpg',
           link: 'http://anpha.shop',
@@ -31,20 +45,6 @@ const workSlides = {
           title: 'Educational Resources',
           path: '/ere.jpg',
           link: 'https://ere-eta.vercel.app',
-        },
-      ],
-    },
-    {
-      projects: [
-        {
-          title: 'Dream Vacations',
-          path: '/dream-vacations.jpg',
-          link: 'https://dream-vacations-01.netlify.app',
-        },
-        {
-          title: 'Digital Flow',
-          path: '/digital-flow.jpg',
-          link: 'https://digital-flow-01.netlify.app',
         },
         {
           title: 'Street Slicer',
