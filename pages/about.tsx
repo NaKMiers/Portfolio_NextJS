@@ -47,6 +47,7 @@ import CountUp from 'react-countup'
 import { IoLogoAndroid } from 'react-icons/io5'
 import Avatar from '../components/Avatar'
 import { fadeIn } from '../utils/variants'
+import { RiFlutterFill } from 'react-icons/ri'
 
 type AboutDataItem = {
   title: string
@@ -108,6 +109,7 @@ const aboutData: AboutDataItem[] = [
         icons: [
           [<TbBrandReactNative key={0} title='React Native' />, 'React Native'],
           [<SiExpo key={0} title='Expo' />, 'Expo'],
+          [<RiFlutterFill key={0} title='Flutter' />, 'Flutter'],
         ],
       },
       {

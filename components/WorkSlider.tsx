@@ -13,9 +13,11 @@ const workSlides = {
     {
       projects: [
         {
-          title: 'Deewas',
+          title: 'Deewas - iOS',
           path: '/deewas.png',
           link: 'https://apps.apple.com/app/deewas/id6745058784',
+          title2: 'Deewas - Android',
+          link2: 'https://play.google.com/store/apps/details?id=com.nakmiers.deewas',
         },
         {
           title: 'Mona Edu',
@@ -89,9 +91,7 @@ const WorkSlider = () => {
         <SwiperSlide key={i}>
           <div className='grid grid-cols-2 grid-rows-2 gap-4 cursor-pointer'>
             {slide.projects.map((project, i) => (
-              <Link
-                href={project.link}
-                target='_blank'
+              <div
                 className='aspect-video relative rounded-lg overflow-hidden flex items-center justify-center group '
                 key={i}
               >
@@ -103,8 +103,12 @@ const WorkSlider = () => {
                   <div className='absolute inset-0 bg-gradient-to-l from-transparent via-accent to-[#4a22bd] opacity-0 group-hover:opacity-80 transition-all duration-700' />
 
                   {/* title */}
-                  <div className='absolute bottom-0 translate-y-full group-hover:-translate-y-10 group-hover:xl:-translate-y-20 transition-all duration-300'>
-                    <div className='flex items-center gap-x-2 text-[13px] tracking-[0.2em]'>
+                  <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col gap-5  translate-y-full group-hover:-translate-y-1/2 group-hover:top-1/2 transition-all duration-300'>
+                    <Link
+                      href={project.link}
+                      target='_blank'
+                      className='flex items-center gap-x-2 text-[13px] tracking-[0.2em]'
+                    >
                       <div className='delay-100'>LIVE</div>
 
                       <div className='translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-150'>
@@ -114,10 +118,27 @@ const WorkSlider = () => {
                       <div className='text-xl translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-200'>
                         <BsArrowRight />
                       </div>
-                    </div>
+                    </Link>
+                    {project.link2 && (
+                      <Link
+                        href={project.link2}
+                        target='_blank'
+                        className='flex items-center gap-x-2 text-[13px] tracking-[0.2em]'
+                      >
+                        <div className='delay-100'>LIVE</div>
+
+                        <div className='translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-150'>
+                          {project.title2 || project.title}
+                        </div>
+
+                        <div className='text-xl translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-200'>
+                          <BsArrowRight />
+                        </div>
+                      </Link>
+                    )}
                   </div>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </SwiperSlide>
