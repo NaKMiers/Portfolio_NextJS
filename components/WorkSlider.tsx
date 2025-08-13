@@ -20,6 +20,11 @@ const workSlides = {
           link2: 'https://play.google.com/store/apps/details?id=com.nakmiers.deewas',
         },
         {
+          title: 'Anpha Shop',
+          path: '/anpha-shop.jpg',
+          link: 'http://anpha.shop',
+        },
+        {
           title: 'Mona Edu',
           path: '/monaedu.jpg',
           link: 'https://monaedu.com',
@@ -29,19 +34,14 @@ const workSlides = {
           path: '/digital-flow.jpg',
           link: 'https://digital-flow-01.netlify.app',
         },
-        {
-          title: 'Dream Vacations',
-          path: '/dream-vacations.jpg',
-          link: 'https://dream-vacations-01.netlify.app',
-        },
       ],
     },
     {
       projects: [
         {
-          title: 'Anpha Shop',
-          path: '/anpha-shop.jpg',
-          link: 'http://anpha.shop',
+          title: 'Dream Vacations',
+          path: '/dream-vacations.jpg',
+          link: 'https://dream-vacations-01.netlify.app',
         },
         {
           title: 'Educational Resources',
