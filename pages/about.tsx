@@ -7,6 +7,7 @@ import {
   FaCss3,
   FaFigma,
   FaGithub,
+  FaGitlab,
   FaGitSquare,
   FaHtml5,
   FaJs,
@@ -14,7 +15,7 @@ import {
   FaReact,
 } from 'react-icons/fa'
 import { GrHeroku } from 'react-icons/gr'
-import { TbApi, TbBrandReactNative, TbSql } from 'react-icons/tb'
+import { TbApi, TbBrandReactNative } from 'react-icons/tb'
 
 import {
   SiAdobeillustrator,
@@ -23,31 +24,37 @@ import {
   SiAdobexd,
   SiCanva,
   SiCsharp,
+  SiDocker,
   SiDotnet,
   SiExpo,
   SiExpress,
   SiFirebase,
   SiJirasoftware,
+  SiKubernetes,
   SiMongodb,
   SiMui,
+  SiMysql,
   SiNextdotjs,
+  SiPostgresql,
+  SiPostman,
   SiPug,
   SiRedux,
   SiTailwindcss,
   SiTypescript,
   SiVercel,
+  SiVisualstudiocode,
 } from 'react-icons/si'
 
-import { BsFiletypeScss } from 'react-icons/bs'
+import { BsCursor, BsFiletypeScss } from 'react-icons/bs'
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useState } from 'react'
 import CountUp from 'react-countup'
 import { IoLogoAndroid } from 'react-icons/io5'
+import { RiFlutterFill } from 'react-icons/ri'
 import Avatar from '../components/Avatar'
 import { fadeIn } from '../utils/variants'
-import { RiFlutterFill } from 'react-icons/ri'
 
 type AboutDataItem = {
   title: string
@@ -58,6 +65,8 @@ type AboutDataItem = {
     link?: string
   }[]
 }
+
+const ICON_SIZE = 20
 
 const aboutData: AboutDataItem[] = [
   {
@@ -81,63 +90,150 @@ const aboutData: AboutDataItem[] = [
       {
         title: 'Web Development',
         icons: [
-          [<FaNodeJs key={0} title='NodeJS' />, 'NodeJS'],
-          [<SiNextdotjs key={0} title='NextJS' />, 'NextJS'],
-          [<FaReact key={0} title='ReactJS' />, 'ReactJS'],
-          [<SiExpress key={0} title='ExpressJS' />, 'ExpressJS'],
-          [<SiMongodb key={0} title='MongoDB' />, 'MongoDB'],
-          [<FaHtml5 key={0} title='HTML5' />, 'HTML'],
-          [<TbSql key={0} title='SQL' />, 'SQL'],
-          [<FaJs key={0} title='JavaScript' />, 'JavaScript'],
-          [<SiTypescript key={0} title='TypeScript' />, 'TypeScript'],
-          [<FaCss3 key={0} title='CSS3' />, 'CSS3'],
-          [<BsFiletypeScss key={0} title='SCSS' />, 'SCSS'],
-          [<FaBootstrap key={0} title='Bootstrap' />, 'Bootstrap'],
-          [<SiTailwindcss key={0} title='Tailwindcss' />, 'Tailwindcss'],
-          [<SiPug key={0} title='Pug' />, 'Pug'],
-          [<SiRedux key={0} title='Redux' />, 'Redux'],
-          [<SiMui key={0} title='Material UI' />, 'UI'],
-          [<SiFirebase key={0} title='Firebase' />, 'Firebase'],
-          [<SiCsharp key={0} title='C#' />, 'C#'],
-          [<SiDotnet key={0} title='.NET' />, '.NET'],
-          [<IoLogoAndroid key={0} title='Android' />, 'Android'],
-          [<TbApi key={0} title='APIs' />, 'APIs'],
+          [<FaNodeJs size={ICON_SIZE} key={0} title='NodeJS' />, 'NodeJS'],
+          [<SiNextdotjs size={ICON_SIZE} key={0} title='NextJS' />, 'NextJS'],
+          [<FaReact size={ICON_SIZE} key={0} title='ReactJS' />, 'ReactJS'],
+          [
+            <SiExpress size={ICON_SIZE} key={0} title='ExpressJS' />,
+            'ExpressJS',
+          ],
+          [<FaHtml5 size={ICON_SIZE} key={0} title='HTML5' />, 'HTML'],
+          [<FaJs size={ICON_SIZE} key={0} title='JavaScript' />, 'JavaScript'],
+          [
+            <SiTypescript size={ICON_SIZE} key={0} title='TypeScript' />,
+            'TypeScript',
+          ],
+          [<FaCss3 size={ICON_SIZE} key={0} title='CSS3' />, 'CSS3'],
+          [<BsFiletypeScss size={ICON_SIZE} key={0} title='SCSS' />, 'SCSS'],
+          [
+            <FaBootstrap size={ICON_SIZE} key={0} title='Bootstrap' />,
+            'Bootstrap',
+          ],
+          [
+            <SiTailwindcss size={ICON_SIZE} key={0} title='Tailwindcss' />,
+            'Tailwindcss',
+          ],
+          [<SiPug size={ICON_SIZE} key={0} title='Pug' />, 'Pug'],
+          [<SiRedux size={ICON_SIZE} key={0} title='Redux' />, 'Redux'],
+          [<SiMui size={ICON_SIZE} key={0} title='Material UI' />, 'UI'],
+          [
+            <SiFirebase size={ICON_SIZE} key={0} title='Firebase' />,
+            'Firebase',
+          ],
+          [<SiCsharp size={ICON_SIZE} key={0} title='C#' />, 'C#'],
+          [<SiDotnet size={ICON_SIZE} key={0} title='.NET' />, '.NET'],
+          [<TbApi size={ICON_SIZE} key={0} title='APIs' />, 'APIs'],
         ],
       },
       {
         title: 'Mobile Development',
         icons: [
-          [<TbBrandReactNative key={0} title='React Native' />, 'React Native'],
-          [<SiExpo key={0} title='Expo' />, 'Expo'],
-          [<RiFlutterFill key={0} title='Flutter' />, 'Flutter'],
+          [<SiExpo size={ICON_SIZE} key={0} title='Expo' />, 'Expo'],
+          [
+            <TbBrandReactNative
+              size={ICON_SIZE}
+              key={0}
+              title='React Native'
+            />,
+            'React Native',
+          ],
+          [
+            <RiFlutterFill size={ICON_SIZE} key={0} title='Flutter' />,
+            'Flutter',
+          ],
+          [
+            <IoLogoAndroid size={ICON_SIZE} key={0} title='Android' />,
+            'Android',
+          ],
         ],
       },
       {
-        title: 'UI/UX Design',
+        title: 'Databases',
         icons: [
-          [<FaFigma key={0} title='Figma' />, 'Figma'],
-          [<SiCanva key={0} title='Canva' />, 'Canva'],
-          [<SiAdobephotoshop key={0} title='Adobe Photoshop' />, 'Adobe Photoshop'],
-          [<SiAdobeillustrator key={0} title='Adobe Illustrator' />, 'Adobe Illustrator'],
-          [<SiAdobepremierepro key={0} title='Adobe Premiere Pro' />, 'Adobe Premiere Pro'],
-          [<SiAdobexd key={0} title='Adobe XD' />, 'Adobe XD'],
+          [<SiMongodb size={ICON_SIZE} key={0} title='MongoDB' />, 'MongoDB'],
+          [
+            <SiPostgresql size={ICON_SIZE} key={0} title='PostgreSQL' />,
+            'PostgreSQL',
+          ],
+          [<SiMysql size={ICON_SIZE} key={0} title='MySQL' />, 'MySQL'],
         ],
       },
       {
         title: 'Management',
         icons: [
-          [<FaGitSquare key={0} title='Git' />, 'Git'],
-          [<FaGithub key={0} title='Github' />, 'Github'],
-          [<SiJirasoftware key={0} title='Jira' />, 'Jira'],
+          [<FaGitSquare size={ICON_SIZE} key={0} title='Git' />, 'Git'],
+          [<FaGithub size={ICON_SIZE} key={0} title='Github' />, 'Github'],
+          [<FaGitlab size={ICON_SIZE} key={0} title='Gitlab' />, 'Gitlab'],
+          [<SiJirasoftware size={ICON_SIZE} key={0} title='Jira' />, 'Jira'],
         ],
       },
       {
         title: 'Deployment',
         icons: [
-          [<SiVercel key={0} title='Vercel' />, 'Vercel'],
-          [<BiLogoNetlify key={0} title='Netlify' size={26} />, 'Netlify'],
-          [<GrHeroku key={0} title='Heroku' />, 'Heroku'],
+          [<SiVercel size={ICON_SIZE} key={0} title='Vercel' />, 'Vercel'],
+          [
+            <BiLogoNetlify size={ICON_SIZE} key={0} title='Netlify' />,
+            'Netlify',
+          ],
+          [<GrHeroku size={ICON_SIZE} key={0} title='Heroku' />, 'Heroku'],
+          [<SiDocker size={ICON_SIZE} key={0} title='Docker' />, 'Docker'],
+          [
+            <SiKubernetes size={ICON_SIZE} key={0} title='Kubernetes' />,
+            'Kubernetes',
+          ],
         ],
+      },
+      {
+        title: 'UI/UX Design',
+        icons: [
+          [<FaFigma size={ICON_SIZE} key={0} title='Figma' />, 'Figma'],
+          [<SiCanva size={ICON_SIZE} key={0} title='Canva' />, 'Canva'],
+          [
+            <SiAdobephotoshop
+              size={ICON_SIZE}
+              key={0}
+              title='Adobe Photoshop'
+            />,
+            'Adobe Photoshop',
+          ],
+          [
+            <SiAdobeillustrator
+              size={ICON_SIZE}
+              key={0}
+              title='Adobe Illustrator'
+            />,
+            'Adobe Illustrator',
+          ],
+          [
+            <SiAdobepremierepro
+              size={ICON_SIZE}
+              key={0}
+              title='Adobe Premiere Pro'
+            />,
+            'Adobe Premiere Pro',
+          ],
+          [<SiAdobexd size={ICON_SIZE} key={0} title='Adobe XD' />, 'Adobe XD'],
+        ],
+      },
+      {
+        title: 'Tools',
+        icons: [
+          [
+            <SiVisualstudiocode size={ICON_SIZE} key={0} title='VSCode' />,
+            'VSCode',
+          ],
+          [<SiPostman size={ICON_SIZE} key={0} title='Postman' />, 'Postman'],
+          [<BsCursor size={ICON_SIZE} key={0} title='Cursor' />, 'Cursor'],
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Experience',
+    info: [
+      {
+        title: 'Rikkeisoft HCM',
+        stage: '2025 - Present',
       },
     ],
   },
@@ -145,7 +241,8 @@ const aboutData: AboutDataItem[] = [
     title: 'Education',
     info: [
       {
-        title: 'Ho Chi Minh City University of Foreign Language And Information Technology (HUFLIT)',
+        title:
+          'Ho Chi Minh City University of Foreign Language And Information Technology (HUFLIT)',
         stage: '2022 - Present',
       },
       {
@@ -208,8 +305,8 @@ const About = () => {
         <Avatar />
       </motion.div>
 
-      <div className='relative z-10 container mx-auto h-full flex flex-col items-center xl:flex-row xl:items-start gap-x-6 max-w-[1080px]'>
-        <div className='w-full xl:w-[55%] flex flex-col justify-center'>
+      <div className='relative z-10 container mx-auto h-full flex flex-col items-center xl:flex-row xl:items-start gap-x-6 max-w-[1200px]'>
+        <div className='w-full xl:w-[50%] flex flex-col justify-center'>
           <motion.h2
             variants={fadeIn('right', 0.2)}
             initial='hidden'
@@ -217,7 +314,8 @@ const About = () => {
             exit='hidden'
             className='h2 z-10 mt-8 xl:mt-0'
           >
-            Captivating <span className='text-accent'>stories</span> birth magnifcent designs.
+            Captivating <span className='text-accent'>stories</span> birth
+            magnifcent designs.
           </motion.h2>
           <motion.p
             variants={fadeIn('right', 0.4)}
@@ -226,9 +324,10 @@ const About = () => {
             exit='hidden'
             className='max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0 text-white/80'
           >
-            {new Date().getFullYear() - 2019} years ago I discovered my passion for programming when I
-            was a high school student and from there I had to sacrifice many things to become a full
-            stack developer at the age of 18.
+            {new Date().getFullYear() - 2019} years ago I discovered my passion
+            for programming when I was a high school student and from there I
+            had to sacrifice many things to become a full stack developer at the
+            age of 18.
           </motion.p>
 
           <motion.div
@@ -241,7 +340,7 @@ const About = () => {
             <div className='flex flex-1 xl:gap-x-6'>
               <div className='relative flex-1 after:w-px after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0'>
                 <div className='text-2xl xl:text-3xl font-extrabold text-accent mb-2'>
-                  <CountUp start={0} end={5} duration={5} /> +
+                  <CountUp start={0} end={6} duration={5} /> +
                 </div>
                 <div className='text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]'>
                   Years of experience
@@ -250,7 +349,7 @@ const About = () => {
 
               <div className='relative flex-1 after:w-px after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0'>
                 <div className='text-2xl xl:text-3xl font-extrabold text-accent mb-2'>
-                  <CountUp start={0} end={5800} duration={5} /> +
+                  <CountUp start={0} end={6000} duration={5} /> +
                 </div>
                 <div className='text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]'>
                   Hours Of Coding
@@ -283,7 +382,7 @@ const About = () => {
           initial='hidden'
           animate='show'
           exit='hidden'
-          className='flex flex-col w-full xl:w-[45%] max-w-[500px] overflow-scroll no-scrollbar relative z-10'
+          className='flex flex-col w-full xl:w-[50%] overflow-scroll no-scrollbar relative z-10'
         >
           <div className='flex gap-x-4 xl:gap-x-8 mx-auto xl:mx-0 mb-4'>
             {aboutData.map((item, itemIndex) => (
@@ -324,7 +423,7 @@ const About = () => {
                 <div className='flex gap-x-4 gap-y-2 flex-wrap max-w-[350px]'>
                   {item.icons?.map((icon: any, i) => (
                     <div
-                      className='text-2xl flex flex-col border p-2 rounded-md shadow-md gap-1 items-center text-white'
+                      className='text-2xl flex justify-center flex-col border p-1.5 rounded-md shadow-md gap-1 items-center text-white'
                       key={0}
                     >
                       {icon[0]} <span className='text-xs'>{icon[1]}</span>

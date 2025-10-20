@@ -1,11 +1,23 @@
 'use client'
 
+import { motion } from 'framer-motion'
+import {} from 'react-icons/rx'
 import Bulb from '../components/Bulb'
 import Circles from '../components/Circles'
 import ServiceSlider from '../components/ServiceSlider'
 import { fadeIn } from '../utils/variants'
-import { motion } from 'framer-motion'
-import {} from 'react-icons/rx'
+
+const myServices = [
+  'Front-end & Back-end Development',
+  'Mobile Development',
+  'Custom Website By Demand',
+  'AI Integrated Web Application',
+  'Making E-Commerce & Portfolio Websites',
+  'APIs Integration',
+  'Performance Optimization',
+  'Bug fixing & Maintenance',
+  '...',
+]
 
 const Services = () => {
   return (
@@ -34,17 +46,13 @@ const Services = () => {
               className='mb-4 max-w-[400px] mx-auto lg:mx-0 z-10'
             >
               <span className='opacity-80'>
-                I&apos;m specializing in web development and mobile development. I offer:
+                I&apos;m specializing in web development and mobile development.
+                I offer:
               </span>
               <ul className='list-disc pl-4 opacity-80'>
-                <li>Front-end & Back-end Development</li>
-                <li>Mobile Development</li>
-                <li>Performance Optimization</li>
-                <li>Custom Website By Demand</li>
-                <li>Making E-Commerce & Portfolio Websites</li>
-                <li>APIs Integration</li>
-                <li>AI Integrated Web Application</li>
-                <li>...</li>
+                {myServices.map((service, index) => (
+                  <li key={index}>{service}</li>
+                ))}
               </ul>
             </motion.div>
           </div>

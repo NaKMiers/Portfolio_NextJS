@@ -25,7 +25,16 @@ const Home = () => {
               </span>
               <br />
               <TypeAnimation
-                sequence={['Anh Khoa Nguyen', 1500, 'an IT student', 1000, 'NaKMiers', 1000]}
+                sequence={[
+                  'Anh Khoa Nguyen',
+                  1500,
+                  'a Software Engineer',
+                  1000,
+                  'a Business Owner',
+                  1000,
+                  'a Content Creator',
+                  1000,
+                ]}
                 speed={50}
                 repeat={Infinity}
               />
@@ -39,8 +48,8 @@ const Home = () => {
             exit='hidden'
             className='max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16 z-10'
           >
-            I help designers, businesses and startups bring their ideas to life. Powered by passion,
-            dream and milo.
+            I help designers, businesses and startups bring their ideas to life.
+            Powered by passion, dream and milo.
           </motion.p>
 
           <div className='flex justify-center xl:hidden relative z-10'>
