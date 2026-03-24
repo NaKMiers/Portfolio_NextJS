@@ -1,3 +1,4 @@
+import { ProjectItem } from '@/types/profile'
 import Image from 'next/image'
 import Link from 'next/link'
 import { BsArrowRight } from 'react-icons/bs'
@@ -77,7 +78,21 @@ const workSlides = {
   ],
 }
 
-const WorkSlider = () => {
+const WorkSlider = ({ projects }: { projects: ProjectItem[] }) => {
+  if (!projects) return null
+
+  // split projects (max 4 per slide)
+  const slides = projects.reduce((acc, project, index) => {
+    const slideIndex = Math.floor(index / 4)
+    if (!acc[slideIndex]) {
+      acc[slideIndex] = []
+    }
+    acc[slideIndex].push(project)
+    return acc
+  }, [] as ProjectItem[][])
+
+  console.log(slides)
+
   return (
     <Swiper
       spaceBetween={10}
@@ -87,17 +102,22 @@ const WorkSlider = () => {
       modules={[Pagination]}
       className='h-[280px] sm:h-[480px]'
     >
-      {workSlides.slides.map((slide, i) => (
+      {slides.map((slide, i) => (
         <SwiperSlide key={i}>
           <div className='grid grid-cols-2 grid-rows-2 gap-4 cursor-pointer'>
-            {slide.projects.map((project, i) => (
+            {slide.map((project, i) => (
               <div
                 className='aspect-video relative rounded-lg overflow-hidden flex items-center justify-center group '
                 key={i}
               >
                 <div className='flex items-center justify-center relative overflow-hidden group'>
                   {/* project */}
-                  <Image src={project.path} alt='slide image' width={500} height={300} />
+                  <Image
+                    src={project.images[0]}
+                    alt={project.title || 'project image'}
+                    width={500}
+                    height={300}
+                  />
 
                   {/* gradient overlay */}
                   <div className='absolute inset-0 bg-gradient-to-l from-transparent via-accent to-[#4a22bd] opacity-0 group-hover:opacity-80 transition-all duration-700' />
@@ -105,7 +125,7 @@ const WorkSlider = () => {
                   {/* title */}
                   <div className='absolute top-0 left-0 right-0 bottom-0 flex items-center justify-center flex-col gap-5  translate-y-full group-hover:-translate-y-1/2 group-hover:top-1/2 transition-all duration-300'>
                     <Link
-                      href={project.link}
+                      href={project.links[0]}
                       target='_blank'
                       className='flex items-center gap-x-2 text-[13px] tracking-[0.2em]'
                     >
@@ -119,16 +139,17 @@ const WorkSlider = () => {
                         <BsArrowRight />
                       </div>
                     </Link>
-                    {project.link2 && (
+
+                    {project.links[1] && (
                       <Link
-                        href={project.link2}
+                        href={project.links[1]}
                         target='_blank'
                         className='flex items-center gap-x-2 text-[13px] tracking-[0.2em]'
                       >
                         <div className='delay-100'>LIVE</div>
 
                         <div className='translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-150'>
-                          {project.title2 || project.title}
+                          {project.title}
                         </div>
 
                         <div className='text-xl translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-200'>

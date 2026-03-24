@@ -1,25 +1,4 @@
-import nodeMailer from 'nodemailer'
-
-// SENDMAIL CORE
-const transporter = nodeMailer.createTransport({
-  service: 'gmail',
-  secure: true,
-  auth: {
-    user: process.env.MAIL,
-    pass: process.env.MAIL_APP_PASSWORD,
-  },
-})
-
-async function sendMail(to: string, subject: string, html: string) {
-  console.log(html)
-
-  await transporter.sendMail({
-    from: 'Portfolio <no-reply@anhkhoa.site>',
-    to: to,
-    subject: subject,
-    html: html,
-  })
-}
+import { sendMail } from '@/lib/mailer'
 
 export default async function handler(req: any, res: any) {
   try {

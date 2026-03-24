@@ -6,8 +6,25 @@ import Avatar from '../components/Avatar'
 import ParticlesContainer from '../components/ParticlesContainer'
 import ProjectsBtn from '../components/ProjectsBtn'
 import { fadeIn } from '../utils/variants'
+import { useApp } from '@/context/AppContext'
+import { useMemo } from 'react'
 
 const Home = () => {
+  const { profile } = useApp()
+
+  const sequence = useMemo(() => {
+    const fullName = (profile?.fullName || profile?.username || '').trim()
+    const rawJobTitles = profile?.jobTitle
+    const jobTitles = Array.isArray(rawJobTitles)
+      ? rawJobTitles.map(title => String(title ?? '').trim()).filter(Boolean)
+      : []
+
+    const dynamicSequence = [fullName, 1500, ...jobTitles.flatMap(title => [title, 1000])]
+    if (dynamicSequence.length > 2) return dynamicSequence
+
+    return ['-', 1500]
+  }, [profile])
+
   return (
     <div className='bg-primary/60 bg-gradient-to-r from-primary/10 via-black/30 min-h-screen'>
       <div className='pt-48 md:pt-20'>
@@ -25,16 +42,8 @@ const Home = () => {
               </span>
               <br />
               <TypeAnimation
-                sequence={[
-                  'Anh Khoa Nguyen',
-                  1500,
-                  'a Software Engineer',
-                  1000,
-                  'a Business Owner',
-                  1000,
-                  'a Content Creator',
-                  1000,
-                ]}
+                key={JSON.stringify(sequence)}
+                sequence={sequence}
                 speed={50}
                 repeat={Infinity}
               />
@@ -48,8 +57,7 @@ const Home = () => {
             exit='hidden'
             className='max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16 z-10'
           >
-            I help designers, businesses and startups bring their ideas to life.
-            Powered by passion, dream and milo.
+            {profile?.description}
           </motion.p>
 
           <div className='flex justify-center xl:hidden relative z-10'>
@@ -68,7 +76,12 @@ const Home = () => {
       </div>
 
       <div className='w-full h-full absolute right-0 bottom-0'>
-        <div className='opacity-50 bg-cover bg-[56%] bg-explosion bg-no-repeat w-screen h-screen absolute' />
+        <div
+          className='opacity-50 bg-cover bg-[56%] bg-no-repeat w-screen h-screen absolute'
+          style={{
+            backgroundImage: profile?.backgroundImage ? `url(${profile.backgroundImage})` : undefined,
+          }}
+        />
 
         <ParticlesContainer />
 

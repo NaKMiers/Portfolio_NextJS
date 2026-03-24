@@ -1,4 +1,3 @@
-import '@/styles/globals.css'
 import Header from '@/components/Header'
 import Nav from '@/components/Nav'
 import TopLeftImg from '@/components/TopLeftImg'
@@ -13,9 +12,7 @@ const sora = Sora({
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div
-      className={`page bg-site text-white bg-cover bg-no-repeat ${sora.variable} font-sora relative`}
-    >
+    <div className={`page bg-site text-white bg-cover bg-no-repeat ${sora.variable} font-sora relative`}>
       <Head>
         <title>Anh Khoa | Full Stack Developer</title>
         <meta

@@ -4,9 +4,11 @@ import axios from 'axios'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { BsArrowRight } from 'react-icons/bs'
+import { useApp } from '@/context/AppContext'
 import { fadeIn } from '../utils/variants'
 
 const Contact = () => {
+  const { profile } = useApp()
   const [form, setForm] = useState({
     email: '',
     firstname: '',
@@ -36,7 +38,12 @@ const Contact = () => {
 
   return (
     <div className='min-h-screen bg-primary/60 bg-gradient-to-r from-primary/10'>
-      <div className='opacity-40 bg-[55%] bg-cover  bg-explosion bg-no-repeat w-screen h-screen fixed top-0' />
+      <div
+        className='opacity-40 bg-[55%] bg-cover bg-no-repeat w-screen h-screen fixed top-0'
+        style={{
+          backgroundImage: profile?.backgroundImage ? `url(${profile.backgroundImage})` : undefined,
+        }}
+      />
 
       <div className='relative z-10 container mx-auto py-32 text-center xl:text-left flex items-center justify-center h-full'>
         {/* text & form */}

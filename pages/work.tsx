@@ -1,5 +1,6 @@
 'use client'
 
+import { useApp } from '@/context/AppContext'
 import Bulb from '../components/Bulb'
 import Circles from '../components/Circles'
 import WorkSlider from '../components/WorkSlider'
@@ -7,9 +8,16 @@ import { fadeIn } from '../utils/variants'
 import { motion } from 'framer-motion'
 
 const Work = () => {
+  const { profile } = useApp()
+
   return (
     <div className='h-full bg-primary/60 bg-gradient-to-r from-primary/10 py-36 flex items-center'>
-      <div className='opacity-40 scale-150 bg-left-top bg-cover origin-top-left bg-explosion bg-no-repeat w-screen h-screen fixed top-0' />
+      <div
+        className='opacity-40 scale-150 bg-left-top bg-cover origin-top-left bg-no-repeat w-screen h-screen fixed top-0'
+        style={{
+          backgroundImage: profile?.backgroundImage ? `url(${profile.backgroundImage})` : undefined,
+        }}
+      />
 
       <Circles />
 
@@ -23,7 +31,7 @@ const Work = () => {
               exit='hidden'
               className='h2 mt-10 xl:mt-0 z-10'
             >
-              My work <span className='text-accent'>.</span>
+              {profile?.workHeading} <span className='text-accent'>.</span>
             </motion.h2>
             <motion.p
               variants={fadeIn('up', 0.4)}
@@ -32,9 +40,7 @@ const Work = () => {
               exit='hidden'
               className='mb-4 max-w-[400px] mx-auto lg:mx-0 z-10 text-white/80'
             >
-              Below are some of my outstanding projects. Includes many genres,
-              mobile app, e-commerce, travel, events, branding, portfolio, and
-              more.
+              {profile?.workSubHeading}
             </motion.p>
           </div>
 
@@ -45,7 +51,7 @@ const Work = () => {
             exit='hidden'
             className='w-full xl:max-w-[65%]'
           >
-            <WorkSlider />
+            <WorkSlider projects={profile?.projects ?? []} />
           </motion.div>
         </div>
       </div>

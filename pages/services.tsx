@@ -6,6 +6,7 @@ import Bulb from '../components/Bulb'
 import Circles from '../components/Circles'
 import ServiceSlider from '../components/ServiceSlider'
 import { fadeIn } from '../utils/variants'
+import { useApp } from '@/context/AppContext'
 
 const myServices = [
   'Front-end & Back-end Development',
@@ -20,9 +21,16 @@ const myServices = [
 ]
 
 const Services = () => {
+  const { profile } = useApp()
+
   return (
     <div className='min-h-screen bg-primary/60 bg-gradient-to-r from-primary/10 py-36 flex items-center overflow-x-hidden w-'>
-      <div className='opacity-40 scale-150 bg-[55%] bg-cover origin-top bg-explosion bg-no-repeat w-screen h-screen fixed top-0' />
+      <div
+        className='opacity-40 scale-150 bg-[55%] bg-cover origin-top bg-no-repeat w-screen h-screen fixed top-0'
+        style={{
+          backgroundImage: profile?.backgroundImage ? `url(${profile.backgroundImage})` : undefined,
+        }}
+      />
 
       <Circles />
 
@@ -36,7 +44,7 @@ const Services = () => {
               exit='hidden'
               className='h2 mt-10 xl:mt-0 z-10'
             >
-              My services
+              {profile?.serviceHeading}
             </motion.h2>
             <motion.div
               variants={fadeIn('up', 0.4)}
@@ -45,12 +53,9 @@ const Services = () => {
               exit='hidden'
               className='mb-4 max-w-[400px] mx-auto lg:mx-0 z-10'
             >
-              <span className='opacity-80'>
-                I&apos;m specializing in web development and mobile development.
-                I offer:
-              </span>
+              <span className='opacity-80'>{profile?.serviceSubHeading}</span>
               <ul className='list-disc pl-4 opacity-80'>
-                {myServices.map((service, index) => (
+                {profile?.briefServices.map((service, index) => (
                   <li key={index}>{service}</li>
                 ))}
               </ul>
@@ -64,7 +69,7 @@ const Services = () => {
             exit='hidden'
             className='w-full xl:max-w-[65%]'
           >
-            <ServiceSlider />
+            <ServiceSlider services={profile?.services ?? []} />
           </motion.div>
         </div>
       </div>

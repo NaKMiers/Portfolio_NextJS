@@ -1,48 +1,14 @@
-import { BsCartCheck } from 'react-icons/bs'
-import { IoCode, IoCodeSlash, IoPhonePortrait, IoPhonePortraitSharp } from 'react-icons/io5'
-import { LuBrainCircuit } from 'react-icons/lu'
-import { RxArrowTopRight, RxReader } from 'react-icons/rx'
+import { ServiceItem } from '@/types/profile'
+import { RxArrowTopRight } from 'react-icons/rx'
+import { resolveIconFromCode } from '@/utils/iconResolver'
 import 'swiper/css'
 import 'swiper/css/free-mode'
 import 'swiper/css/pagination'
 import { FreeMode, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-// data
-const serviceData = [
-  {
-    icon: <IoCode />,
-    title: 'Front-end',
-    description: 'Front-end expert creating intuitive interfaces for optimal user experiences.',
-  },
-  {
-    icon: <IoCodeSlash />,
-    title: 'Back-end',
-    description: 'Back-end architect for robust, scalable server solutions and seamless functionality.',
-  },
-  {
-    icon: <IoPhonePortraitSharp />,
-    title: 'Mobile',
-    description: 'Mobile developer building responsive apps for iOS & Android.',
-  },
-  {
-    icon: <BsCartCheck />,
-    title: 'E-Commerce',
-    description: 'E-commerce expert building secure, efficient platforms for smooth transactions.',
-  },
-  {
-    icon: <RxReader />,
-    title: 'Portfolio',
-    description: 'Portfolio specialist highlighting skills and achievements clearly.',
-  },
-  {
-    icon: <LuBrainCircuit />,
-    title: 'APIs Integration',
-    description: 'APIs Integration for smarter systems and improved efficiency.',
-  },
-]
-
-const ServiceSlider = () => {
+const ServiceSlider = ({ services }: { services: ServiceItem[] }) => {
+  if (!services) return null
   return (
     <Swiper
       breakpoints={{
@@ -62,11 +28,11 @@ const ServiceSlider = () => {
       modules={[FreeMode, Pagination]}
       className='h-[240px] sm:h-[340px]'
     >
-      {serviceData.map((item, i) => (
+      {services.map((item, i) => (
         <SwiperSlide key={i}>
           <div className='bg-[rgba(65,49,123,0.4)] min-h-[300px] h-max rounded-lg px-6 py-8 flex flex-col gap-x-6 sm:gap-x-0 group cursor-pointer hover:bg-[rgba(89,65,169,0.4)] transition-all duration-300'>
             {/* icon */}
-            <div className='text-4xl text-accent mb-4'>{item.icon}</div>
+            <div className='text-4xl text-accent mb-4'>{resolveIconFromCode(item.icon, 36)}</div>
 
             {/* title & description */}
             <div className='mb-8 flex-1'>
