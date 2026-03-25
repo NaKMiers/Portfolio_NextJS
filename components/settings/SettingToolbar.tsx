@@ -29,9 +29,11 @@ export default function SettingToolbar({
       </div>
 
       <div className='flex flex-wrap items-center gap-2'>
-        <button type='button' className={secondaryBtnCls} onClick={onFillMock}>
-          Fill mock data
-        </button>
+        {process.env.NODE_ENV === 'development' && (
+          <button type='button' className={secondaryBtnCls} onClick={onFillMock}>
+            Fill mock data
+          </button>
+        )}
         <button
           type='button'
           onClick={onSave}

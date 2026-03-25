@@ -1,6 +1,6 @@
 export type SocialLink = {
   link: string
-  type: string
+  icon: string
   name: string
 }
 
@@ -44,11 +44,15 @@ export type ServiceItem = {
   description: string
 }
 
+export type ProjectPart = {
+  image: string
+  description: string
+  link: string
+}
+
 export type ProjectItem = {
   title: string
-  images: string[]
-  description: string
-  links: string[]
+  parts: ProjectPart[]
 }
 
 export type Profile = {

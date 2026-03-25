@@ -5,6 +5,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import type { Profile, ServiceItem } from '@/types/profile'
 import { MAX_PROFILE_JSON_BYTES } from '@/lib/upload-limits'
 import { getIconCatalog } from '@/utils/iconResolver'
+import { useApp } from '@/context/AppContext'
 import IconPickerModal from '@/components/settings/IconPickerModal'
 import SkillsSection from '@/components/settings/SkillsSection'
 import ServicesSection from '@/components/settings/ServicesSection'
@@ -13,7 +14,8 @@ import SettingLoading from '@/components/settings/SettingLoading'
 import SettingToolbar from '@/components/settings/SettingToolbar'
 import SettingErrorBanner from '@/components/settings/SettingErrorBanner'
 import BasicsSection from '@/components/settings/BasicsSection'
-import SocialStatsSection from '@/components/settings/SocialStatsSection'
+import SocialsSection from '@/components/settings/SocialsSection'
+import StatsSection from '@/components/settings/StatsSection'
 import AboutSection from '@/components/settings/AboutSection'
 import ExperienceSection from '@/components/settings/ExperienceSection'
 import EducationSection from '@/components/settings/EducationSection'
@@ -25,8 +27,10 @@ import {
   normalizeProfile,
 } from '@/components/settings/settings-utils'
 import type { IconPickerTarget, UploadingState } from '@/components/settings/types'
+import { cleanProfileForSave } from '@/components/settings/cleanProfileForSave'
 
 function Setting() {
+  const { profile: appProfile, setProfile: setAppProfile } = useApp()
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -42,20 +46,16 @@ function Setting() {
   })
 
   useEffect(() => {
-    const run = async () => {
-      try {
-        setLoading(true)
-        const res = await fetch('/api/profile')
-        const data = await res.json()
-        if (data?.profile) setProfile(normalizeProfile(data.profile))
-      } catch (e) {
-        setError(e instanceof Error ? e.message : 'Failed to load profile')
-      } finally {
-        setLoading(false)
-      }
-    }
-    run()
-  }, [])
+    // Hydrate editor state from app-level profile (already fetched by AppProvider).
+    if (!appProfile) return
+    setProfile(normalizeProfile(appProfile))
+    setLoading(false)
+  }, [appProfile])
+
+  useEffect(() => {
+    // If profile doesn't exist yet, show loading state.
+    setLoading(appProfile == null)
+  }, [appProfile])
 
   const preview = useMemo(() => {
     const bg = profile.backgroundImage || ''
@@ -76,18 +76,7 @@ function Setting() {
     setSaving(true)
     setError(null)
     try {
-      const body = {
-        ...profile,
-        socials: Array.isArray(profile.socials) ? profile.socials : [],
-        stats: Array.isArray(profile.stats) ? profile.stats : [],
-        skills: Array.isArray(profile.skills) ? profile.skills : [],
-        experience: Array.isArray(profile.experience) ? profile.experience : [],
-        education: Array.isArray(profile.education) ? profile.education : [],
-        certificates: Array.isArray(profile.certificates) ? profile.certificates : [],
-        briefServices: Array.isArray(profile.briefServices) ? profile.briefServices : [],
-        services: Array.isArray(profile.services) ? profile.services : [],
-        projects: Array.isArray(profile.projects) ? profile.projects : [],
-      }
+      const body = cleanProfileForSave(profile)
 
       const json = JSON.stringify(body)
       if (new TextEncoder().encode(json).length > MAX_PROFILE_JSON_BYTES) {
@@ -102,6 +91,11 @@ function Setting() {
 
       const data = await res.json()
       if (!res.ok) throw new Error(data?.error || 'Failed to save profile')
+      if (data?.profile) {
+        const next = normalizeProfile(data.profile)
+        setAppProfile(next)
+        setProfile(next)
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Failed to save')
     } finally {
@@ -134,6 +128,14 @@ function Setting() {
       })
     } else if (iconPickerTarget.kind === 'service') {
       updateService(iconPickerTarget.serviceIndex, { icon: iconCode })
+    } else if (iconPickerTarget.kind === 'social') {
+      setProfile(p => {
+        const next = [...p.socials]
+        const cur = next[iconPickerTarget.socialIndex]
+        if (!cur) return p
+        next[iconPickerTarget.socialIndex] = { ...cur, icon: iconCode }
+        return { ...p, socials: next }
+      })
     }
 
     setIconPickerTarget(null)
@@ -167,7 +169,12 @@ function Setting() {
               setUploading={setUploading}
               setError={setError}
             />
-            <SocialStatsSection profile={profile} setProfile={setProfile} />
+            <SocialsSection
+              profile={profile}
+              setProfile={setProfile}
+              setIconPickerTarget={setIconPickerTarget}
+            />
+            <StatsSection profile={profile} setProfile={setProfile} />
             <AboutSection profile={profile} setProfile={setProfile} />
             <SkillsSection
               profile={profile}

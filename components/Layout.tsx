@@ -1,5 +1,6 @@
 import Header from '@/components/Header'
 import Nav from '@/components/Nav'
+import ProfileFetchStatus from '@/components/ProfileFetchStatus'
 import TopLeftImg from '@/components/TopLeftImg'
 import { Sora } from 'next/font/google'
 import Head from 'next/head'
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <TopLeftImg />
       <Nav />
       <Header />
+      <ProfileFetchStatus />
       {children}
     </div>
   )

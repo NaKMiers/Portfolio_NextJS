@@ -4,12 +4,14 @@ import type {
   ExperienceItem,
   Profile,
   ProjectItem,
+  ProjectPart,
   ServiceItem,
   SocialLink,
   SkillGroup,
   SkillItem,
 } from '@/types/profile'
 import { MAX_UPLOAD_BYTES, formatMaxUploadMb } from '@/lib/upload-limits'
+import { resolveIconCode } from '@/utils/iconResolver'
 
 export const MAX_UPLOAD_MB_LABEL = formatMaxUploadMb()
 
@@ -84,8 +86,8 @@ export function makeMockProfile(): Profile {
     avatar: '/file.svg',
     backgroundImage: '/vercel.svg',
     socials: [
-      { name: 'AlexDev', type: 'github', link: 'https://github.com/example' },
-      { name: 'Alex', type: 'linkedin', link: 'https://linkedin.com/in/example' },
+      { name: 'AlexDev', icon: 'github', link: 'https://github.com/example' },
+      { name: 'Alex', icon: 'linkedin', link: 'https://linkedin.com/in/example' },
     ],
     profileHeading: 'Ship products people love',
     profileSubHeading: 'Design systems, APIs, and polished interfaces.',
@@ -129,8 +131,31 @@ export function makeMockProfile(): Profile {
     workHeading: 'Selected work',
     workSubHeading: 'Recent case studies',
     projects: [
-      { title: 'Analytics Dashboard', description: 'SaaS dashboard with real-time analytics and role-based access.', links: ['https://example.com/demo', 'https://github.com/example/app'], images: ['/window.svg', '/file.svg'] },
-      { title: 'Marketing Platform', description: 'Marketing site with CMS-driven content and A/B hooks.', links: ['https://example.com/case-study'], images: ['/vercel.svg'] },
+      {
+        title: 'Analytics Dashboard',
+        parts: [
+          {
+            image: '/window.svg',
+            description: 'SaaS dashboard with real-time analytics and role-based access.',
+            link: 'https://example.com/demo',
+          },
+          {
+            image: '/file.svg',
+            description: 'Repository and technical notes.',
+            link: 'https://github.com/example/app',
+          },
+        ],
+      },
+      {
+        title: 'Marketing Platform',
+        parts: [
+          {
+            image: '/vercel.svg',
+            description: 'Marketing site with CMS-driven content and A/B hooks.',
+            link: 'https://example.com/case-study',
+          },
+        ],
+      },
     ],
   }
 }
@@ -145,7 +170,7 @@ export function normalizeProfile(raw: any): Profile {
   if (!raw || typeof raw !== 'object') return empty
   const profile: Profile = { ...empty, ...raw }
 
-  profile.socials = Array.isArray(raw.socials) ? (raw.socials as SocialLink[]) : []
+  profile.socials = Array.isArray(raw.socials) ? (raw.socials as any[]) : []
   profile.stats = Array.isArray(raw.stats) ? (raw.stats as { label: string; value: number }[]) : []
   profile.skills = Array.isArray(raw.skills) ? (raw.skills as SkillGroup[]) : []
   profile.experience = Array.isArray(raw.experience) ? (raw.experience as ExperienceItem[]) : []
@@ -177,6 +202,16 @@ export function normalizeProfile(raw: any): Profile {
   profile.backgroundImage = profile.backgroundImage ? String(profile.backgroundImage) : ''
   profile.cv = profile.cv ? String(profile.cv) : ''
 
+  profile.socials = profile.socials.map(s => {
+    const name = String((s as any)?.name ?? '')
+    const link = String((s as any)?.link ?? '')
+    const rawIcon = String((s as any)?.icon ?? '')
+    const rawType = String((s as any)?.type ?? '')
+    // Back-compat: if we still have `type`, map it to icon code aliases.
+    const icon = rawIcon || resolveIconCode(rawType) || rawType || ''
+    return { name, link, icon }
+  })
+
   profile.stats = profile.stats.map(s => ({
     label: String(s.label ?? ''),
     value: typeof s.value === 'number' ? s.value : Number(s.value ?? 0),
@@ -191,9 +226,37 @@ export function normalizeProfile(raw: any): Profile {
 
   profile.projects = profile.projects.map(p => ({
     title: String(p.title ?? ''),
-    description: String(p.description ?? ''),
-    images: Array.isArray(p.images) ? (p.images as string[]).map(String) : [],
-    links: Array.isArray(p.links) ? (p.links as string[]).map(String) : [],
+    parts: (() => {
+      // New schema
+      if (Array.isArray((p as any).parts)) {
+        return ((p as any).parts as any[]).map(part => ({
+          image: String(part?.image ?? ''),
+          description: String(part?.description ?? ''),
+          link: String(part?.link ?? ''),
+        })) satisfies ProjectPart[]
+      }
+
+      // Back-compat: old schema {images, description, links}
+      const legacyImages = Array.isArray((p as any).images) ? ((p as any).images as any[]).map(String) : []
+      const legacyLinks = Array.isArray((p as any).links) ? ((p as any).links as any[]).map(String) : []
+      const legacyDescription = String((p as any).description ?? '')
+
+      if (legacyImages.length > 0) {
+        return legacyImages.map((img, i) => ({
+          image: img,
+          description: legacyDescription,
+          link: legacyLinks[i] ?? legacyLinks[0] ?? '',
+        }))
+      }
+
+      if (legacyLinks.length > 0 || legacyDescription) {
+        return legacyLinks.length > 0
+          ? legacyLinks.map(link => ({ image: '', description: legacyDescription, link }))
+          : [{ image: '', description: legacyDescription, link: '' }]
+      }
+
+      return []
+    })(),
   }))
 
   return profile

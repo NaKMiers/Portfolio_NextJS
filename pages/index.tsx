@@ -22,7 +22,7 @@ const Home = () => {
     const dynamicSequence = [fullName, 1500, ...jobTitles.flatMap(title => [title, 1000])]
     if (dynamicSequence.length > 2) return dynamicSequence
 
-    return ['-', 1500]
+    return ['', 1500]
   }, [profile])
 
   return (

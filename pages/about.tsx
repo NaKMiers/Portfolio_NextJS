@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { useMemo, useState } from 'react'
+import { ReactNode, useMemo, useState } from 'react'
+import { format, parseISO } from 'date-fns'
 import CountUp from 'react-countup'
 import Avatar from '../components/Avatar'
 import { fadeIn } from '../utils/variants'
@@ -13,17 +14,20 @@ type AboutDataItem = {
   title: string
   info: {
     title: string
-    icons?: [React.ReactNode, string][]
+    icons?: { icon?: ReactNode; label: string }[]
     stage?: string
     link?: string
   }[]
 }
 
 function formatDateRange(start?: string, end?: string): string {
-  const left = start ? start.slice(0, 7) : ''
-  const right = end ? end.slice(0, 7) : ''
-  if (!left && !right) return ''
-  return `${left || 'N/A'} - ${right || 'Present'}`
+  const leftRaw = (start ?? '').trim()
+  const rightRaw = (end ?? '').trim()
+  if (!leftRaw && !rightRaw) return ''
+
+  const left = leftRaw ? format(parseISO(leftRaw), 'PP') : 'N/A'
+  const right = rightRaw ? format(parseISO(rightRaw), 'PP') : 'Present'
+  return `${left} - ${right}`
 }
 
 const About = () => {
@@ -46,10 +50,10 @@ const About = () => {
         title: 'skills',
         info: (profile.skills ?? []).map(group => ({
           title: group.groupName || 'Skills',
-          icons: (group.items ?? []).map(item => [
-            resolveIconFromCode(item.icon, 20),
-            item.name || 'Untitled skill',
-          ]),
+          icons: (group.items ?? []).map(item => ({
+            icon: item.icon ? resolveIconFromCode(item.icon, 20) : undefined,
+            label: item.name || 'Untitled skill',
+          })),
         })),
       },
       {
@@ -190,9 +194,9 @@ const About = () => {
                   {item.icons?.map((icon, i) => (
                     <div
                       className='text-2xl flex justify-center flex-col border p-1.5 rounded-md shadow-md gap-1 items-center text-white'
-                      key={`${icon?.[1] ?? 'icon'}-${i}`}
+                      key={`${icon?.label ?? 'icon'}-${i}`}
                     >
-                      {icon[0]} <span className='text-xs'>{icon[1]}</span>
+                      {icon.icon ? icon.icon : null} <span className='text-xs'>{icon.label}</span>
                     </div>
                   ))}
                 </div>

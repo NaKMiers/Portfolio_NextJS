@@ -4,6 +4,7 @@ import type { Profile } from '@/types/profile'
 import { MAX_UPLOAD_BYTES } from '@/lib/upload-limits'
 import Section from '@/components/settings/Section'
 import type { UploadingState } from '@/components/settings/types'
+import Spinner from '@/components/settings/Spinner'
 import {
   MAX_UPLOAD_MB_LABEL,
   ghostBtnCls,
@@ -34,7 +35,10 @@ export default function BasicsSection({
     <Section title='Basics' badge='avatar, CV, headings' defaultOpen>
       <div className='grid grid-cols-1 gap-5 md:grid-cols-2'>
         <div className='space-y-2'>
-          <label className={labelCls}>CV (File)</label>
+          <div className='flex items-center justify-between gap-3'>
+            <label className={labelCls}>CV (File)</label>
+            {uploading.cv ? <Spinner className='text-zinc-300' /> : null}
+          </div>
           <p className='text-xs text-zinc-400'>
             Max {MAX_UPLOAD_MB_LABEL} MB. Uploaded to Cloudinary now; Save stores the URL only.
           </p>
@@ -72,7 +76,10 @@ export default function BasicsSection({
         </div>
 
         <div className='space-y-2'>
-          <label className={labelCls}>Background Image</label>
+          <div className='flex items-center justify-between gap-3'>
+            <label className={labelCls}>Background Image</label>
+            {uploading.background ? <Spinner className='text-zinc-300' /> : null}
+          </div>
           <p className='text-xs text-zinc-400'>Max {MAX_UPLOAD_MB_LABEL} MB per image. Uploads immediately.</p>
           <input
             type='file'
@@ -109,7 +116,10 @@ export default function BasicsSection({
         </div>
 
         <div className='space-y-2'>
-          <label className={labelCls}>Avatar</label>
+          <div className='flex items-center justify-between gap-3'>
+            <label className={labelCls}>Avatar</label>
+            {uploading.avatar ? <Spinner className='text-zinc-300' /> : null}
+          </div>
           <p className='text-xs text-zinc-400'>Max {MAX_UPLOAD_MB_LABEL} MB per image. Uploads immediately.</p>
           <input
             type='file'

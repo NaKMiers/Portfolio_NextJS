@@ -6,7 +6,7 @@ export const PROFILE_DOCUMENT_ID = process.env.PROFILE_DOCUMENT_ID!
 const socialLinkSchema = new Schema(
   {
     link: { type: String, default: '' },
-    type: { type: String, default: '' },
+    icon: { type: String, default: '' },
     name: { type: String, default: '' },
   },
   { _id: false }
@@ -73,12 +73,19 @@ const serviceItemSchema = new Schema(
   { _id: false }
 )
 
+const projectPartSchema = new Schema(
+  {
+    image: { type: String, default: '' },
+    description: { type: String, default: '' },
+    link: { type: String, default: '' },
+  },
+  { _id: false }
+)
+
 const projectItemSchema = new Schema(
   {
     title: { type: String, default: '' },
-    images: { type: [String], default: [] },
-    description: { type: String, default: '' },
-    links: { type: [String], default: [] },
+    parts: { type: [projectPartSchema], default: [] },
   },
   { _id: false }
 )
