@@ -21,6 +21,7 @@ import ExperienceSection from '@/components/settings/ExperienceSection'
 import EducationSection from '@/components/settings/EducationSection'
 import CertificatesSection from '@/components/settings/CertificatesSection'
 import ProfilePreviewPanel from '@/components/settings/ProfilePreviewPanel'
+import OwnerAuthGate from '@/components/settings/OwnerAuthGate'
 import {
   makeEmptyProfile,
   makeMockProfile,
@@ -145,75 +146,79 @@ function Setting() {
   if (loading) return <SettingLoading />
 
   return (
-    <div className='z-50 relative min-h-screen bg-zinc-950/50 text-zinc-100 pt-12'>
-      <div className='mx-auto max-w-6xl px-4 py-10'>
-        <SettingToolbar
-          saving={saving}
-          uploading={uploading}
-          onFillMock={() => {
-            setError(null)
-            setProfile(normalizeProfile(makeMockProfile()))
-          }}
-          onSave={onSave}
-        />
+    <OwnerAuthGate>
+      <div className='z-50 relative min-h-screen bg-zinc-950/50 text-zinc-100 pt-12'>
+        <div className='mx-auto max-w-6xl px-4 py-10'>
+          <SettingToolbar
+            saving={saving}
+            uploading={uploading}
+            onFillMock={() => {
+              setError(null)
+              setProfile(normalizeProfile(makeMockProfile()))
+            }}
+            onSave={onSave}
+          />
 
-        <SettingErrorBanner message={error} />
+          <SettingErrorBanner message={error} />
 
-        <div className='grid grid-cols-1 gap-6 lg:grid-cols-[1fr_360px]'>
-          <div className='space-y-6'>
-            <BasicsSection
-              profile={profile}
-              setProfile={setProfile}
-              preview={preview}
-              uploading={uploading}
-              setUploading={setUploading}
-              setError={setError}
-            />
-            <SocialsSection
-              profile={profile}
-              setProfile={setProfile}
-              setIconPickerTarget={setIconPickerTarget}
-            />
-            <StatsSection profile={profile} setProfile={setProfile} />
-            <AboutSection profile={profile} setProfile={setProfile} />
-            <SkillsSection
-              profile={profile}
-              setProfile={setProfile}
-              setIconPickerTarget={setIconPickerTarget}
-            />
-            <ExperienceSection profile={profile} setProfile={setProfile} />
-            <EducationSection profile={profile} setProfile={setProfile} />
-            <CertificatesSection profile={profile} setProfile={setProfile} />
-            <ServicesSection
-              profile={profile}
-              setProfile={setProfile}
-              setIconPickerTarget={setIconPickerTarget}
-            />
-            <ProjectsSection
-              profile={profile}
-              setProfile={setProfile}
-              setError={setError}
-              uploading={uploading}
-              setUploading={setUploading}
-            />
+          <div className='grid grid-cols-1 gap-6 lg:grid-cols-[1fr_360px]'>
+            <div className='space-y-6'>
+              <BasicsSection
+                profile={profile}
+                setProfile={setProfile}
+                preview={preview}
+                uploading={uploading}
+                setUploading={setUploading}
+                setError={setError}
+              />
+              <div className='grid grid-cols-1 gap-6 lg:grid-cols-2'>
+                <SocialsSection
+                  profile={profile}
+                  setProfile={setProfile}
+                  setIconPickerTarget={setIconPickerTarget}
+                />
+                <StatsSection profile={profile} setProfile={setProfile} />
+              </div>
+              <AboutSection profile={profile} setProfile={setProfile} />
+              <SkillsSection
+                profile={profile}
+                setProfile={setProfile}
+                setIconPickerTarget={setIconPickerTarget}
+              />
+              <ExperienceSection profile={profile} setProfile={setProfile} />
+              <EducationSection profile={profile} setProfile={setProfile} />
+              <CertificatesSection profile={profile} setProfile={setProfile} />
+              <ServicesSection
+                profile={profile}
+                setProfile={setProfile}
+                setIconPickerTarget={setIconPickerTarget}
+              />
+              <ProjectsSection
+                profile={profile}
+                setProfile={setProfile}
+                setError={setError}
+                uploading={uploading}
+                setUploading={setUploading}
+              />
+            </div>
+
+            <ProfilePreviewPanel profile={profile} preview={preview} />
           </div>
 
-          <ProfilePreviewPanel profile={profile} preview={preview} />
+          <IconPickerModal
+            open={!!iconPickerTarget}
+            iconQuery={iconQuery}
+            onQueryChange={setIconQuery}
+            filteredIcons={filteredIcons}
+            onSelect={applyIconCode}
+            onClose={() => {
+              setIconPickerTarget(null)
+              setIconQuery('')
+            }}
+          />
         </div>
-
-        <IconPickerModal
-          open={!!iconPickerTarget}
-          iconQuery={iconQuery}
-          onQueryChange={setIconQuery}
-          filteredIcons={filteredIcons}
-          onSelect={applyIconCode}
-          onClose={() => {
-            setIconPickerTarget(null)
-            setIconQuery('')
-          }}
-        />
       </div>
-    </div>
+    </OwnerAuthGate>
   )
 }
 

@@ -4,6 +4,7 @@ import { connectDatabase } from '@/lib/mongodb'
 import { MAX_PROFILE_JSON_BYTES } from '@/lib/upload-limits'
 import { PROFILE_DOCUMENT_ID, ProfileModel } from '@/models/Profile'
 import { sendMail } from '@/lib/mailer'
+import { requireOwnerAuth } from '@/lib/auth'
 import type { Profile } from '@/types/profile'
 
 type ProfileResponse =
@@ -31,6 +32,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     }
 
     if (req.method === 'POST') {
+      if (!requireOwnerAuth(req, res)) return
+
       const contentType = req.headers['content-type'] ?? ''
       if (!contentType.includes('application/json')) {
         return res.status(415).json({ error: 'Expected Content-Type: application/json' })

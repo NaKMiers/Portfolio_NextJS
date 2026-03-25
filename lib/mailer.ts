@@ -14,7 +14,7 @@ export async function sendMail(to: string, subject: string, html: string) {
   console.log(html)
 
   await transporter.sendMail({
-    from: 'Portfolio <no-reply@anhkhoa.site>',
+    from: 'Portfolio <no-reply@anhkhoa.info>',
     to: to,
     subject: subject,
     html: html,

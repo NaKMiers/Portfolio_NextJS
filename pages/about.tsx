@@ -132,7 +132,11 @@ const About = () => {
             <div className='flex flex-1 xl:gap-x-6'>
               {profile?.stats.map(stat => (
                 <div
-                  className='relative after:w-px after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0'
+                  className={`relative${
+                    profile?.stats.indexOf(stat) !== profile?.stats.length - 1
+                      ? ' after:w-px after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0'
+                      : ''
+                  }`}
                   key={stat.label + stat.value}
                 >
                   <div className='text-2xl xl:text-3xl font-extrabold text-accent mb-2'>

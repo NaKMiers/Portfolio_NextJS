@@ -5,6 +5,7 @@ import formidable, { type File as FormidableFile } from 'formidable'
 
 import { uploadToCloudinary } from '@/lib/cloudinary'
 import { MAX_UPLOAD_BYTES } from '@/lib/upload-limits'
+import { requireOwnerAuth } from '@/lib/auth'
 
 const ALLOWED_KINDS = new Set(['avatar', 'background', 'cv', 'project'])
 
@@ -43,6 +44,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     res.setHeader('Allow', 'POST')
     return res.status(405).json({ error: 'Method Not Allowed' })
   }
+
+  if (!requireOwnerAuth(req, res)) return
 
   try {
     const { fields, files } = await parseForm(req)
