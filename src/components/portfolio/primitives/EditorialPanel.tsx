@@ -2,7 +2,7 @@ import type { HTMLAttributes, ReactNode } from 'react'
 
 const cx = (...parts: (string | undefined | false)[]) => parts.filter(Boolean).join(' ')
 
-export type EditorialPanelVariant = 'default' | 'strong'
+type EditorialPanelVariant = 'default' | 'strong'
 
 export type EditorialPanelProps = {
   children: ReactNode

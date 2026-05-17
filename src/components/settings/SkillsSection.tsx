@@ -3,7 +3,16 @@ import React from 'react'
 import type { Profile } from '@/types/profile'
 import Section from '@/components/settings/Section'
 import type { IconPickerTarget } from '@/components/settings/types'
-import { ghostBtnCls, inputCls, labelCls, secondaryBtnCls } from '@/components/settings/settings-utils'
+import {
+  emptyStateCls,
+  ghostBtnCls,
+  iconPreviewCls,
+  inputCls,
+  itemCardCls,
+  labelCls,
+  nestedItemCardCls,
+  secondaryBtnCls,
+} from '@/components/settings/settings-utils'
 import { resolveIconFromCode } from '@/utils/iconResolver'
 
 export default function SkillsSection({
@@ -37,10 +46,10 @@ export default function SkillsSection({
           </button>
         </div>
 
-        {profile.skills.length === 0 ? <div className='text-xs text-muted-foreground'>No skills yet.</div> : null}
+        {profile.skills.length === 0 ? <div className={emptyStateCls}>No skills yet.</div> : null}
 
         {profile.skills.map((group, gIdx) => (
-          <div key={gIdx} className='rounded-2xl border border-zinc-800 bg-zinc-900/50 p-4'>
+          <div key={gIdx} className={itemCardCls}>
             <div className='grid grid-cols-1 gap-3 md:grid-cols-[1fr_auto] md:items-end'>
               <div className='space-y-2'>
                 <label className={labelCls}>Group name</label>
@@ -62,7 +71,7 @@ export default function SkillsSection({
               </div>
             </div>
 
-            <div className='my-4 h-px bg-zinc-800' />
+            <div className='my-4 h-px bg-[linear-gradient(90deg,rgba(31,28,26,0.08),rgba(31,28,26,0.03),transparent)]' />
 
             <div className='space-y-3'>
               <div className='flex items-center justify-between'>
@@ -84,16 +93,16 @@ export default function SkillsSection({
               </div>
 
               {group.items.length === 0 ? (
-                <div className='text-xs text-muted-foreground'>No items in this group.</div>
+                <div className={emptyStateCls}>No items in this group.</div>
               ) : null}
 
               {group.items.map((it, iIdx) => (
-                <div key={iIdx} className='rounded-xl border border-zinc-800 bg-zinc-900/40 p-3'>
+                <div key={iIdx} className={nestedItemCardCls}>
                   <div className='grid grid-cols-1 gap-3 md:grid-cols-2'>
                     <div className='space-y-2'>
                       <label className={labelCls}>Icon code</label>
                       <div className='flex items-center gap-2'>
-                        <div className='flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-700 bg-zinc-950 text-zinc-100'>
+                        <div className={iconPreviewCls}>
                           {resolveIconFromCode(it.icon, 18)}
                         </div>
                         <input

@@ -12,7 +12,7 @@ import {
 } from 'react-icons/hi2'
 
 // One-page public nav: canonical links use `/?section=` (legacy paths still redirect to these).
-export const navData = [
+const navData = [
   { name: 'home', href: '/', icon: <HiHome /> },
   { name: 'about', href: '/?section=about', icon: <HiUser /> },
   { name: 'services', href: '/?section=services', icon: <HiRectangleGroup /> },

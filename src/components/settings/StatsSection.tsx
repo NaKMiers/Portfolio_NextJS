@@ -2,7 +2,14 @@ import React from 'react'
 
 import type { Profile } from '@/types/profile'
 import Section from '@/components/settings/Section'
-import { ghostBtnCls, inputCls, labelCls, secondaryBtnCls } from '@/components/settings/settings-utils'
+import {
+  emptyStateCls,
+  ghostBtnCls,
+  inputCls,
+  itemCardCls,
+  labelCls,
+  secondaryBtnCls,
+} from '@/components/settings/settings-utils'
 
 export default function StatsSection({
   profile,
@@ -33,9 +40,9 @@ export default function StatsSection({
       </div>
 
       <div className='space-y-3'>
-        {profile.stats.length === 0 ? <div className='text-xs text-muted-foreground'>No stats yet.</div> : null}
+        {profile.stats.length === 0 ? <div className={emptyStateCls}>No stats yet.</div> : null}
         {profile.stats.map((st, idx) => (
-          <div key={idx} className='rounded-xl border border-zinc-800 bg-zinc-900/50 p-3'>
+          <div key={idx} className={itemCardCls}>
             <div className='grid grid-cols-1 gap-3'>
               <div className='space-y-2'>
                 <label className={labelCls}>Label</label>

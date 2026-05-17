@@ -49,13 +49,13 @@ export function resolveSiteOrigin(): string {
   return LOCALHOST_SITE_ORIGIN
 }
 
-export function canonicalHomeUrl(): `${string}/` | string {
+function canonicalHomeUrl(): `${string}/` | string {
   const origin = resolveSiteOrigin().replace(/\/$/, '')
   return `${origin}/`
 }
 
 /** SEO description grounded in hero tagline, then trimmed about copy (no invented claims). */
-export function buildPortfolioDescription(profile: Profile, vm: PublicPortfolioViewModel): string {
+function buildPortfolioDescription(profile: Profile, vm: PublicPortfolioViewModel): string {
   const fromHero = collapseWhitespace(profile.description || vm.hero.description)
   const aboutFirst = collapseWhitespace(vm.about.paragraphs[0] ?? profile.aboutMe)
   const body = excerptText(fromHero.length >= 48 ? fromHero : aboutFirst || fromHero, 160)
@@ -68,7 +68,7 @@ export function buildPortfolioDescription(profile: Profile, vm: PublicPortfolioV
 const KEYWORD_LIMIT = 24
 
 /** Keywords strictly from headline fields, titles, capabilities - capped and deduped. */
-export function buildPortfolioKeywords(vm: PublicPortfolioViewModel): string[] {
+function buildPortfolioKeywords(vm: PublicPortfolioViewModel): string[] {
   const acc: string[] = []
   const seen = new Set<string>()
 

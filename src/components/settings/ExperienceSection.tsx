@@ -2,7 +2,14 @@ import React from 'react'
 
 import type { Profile, ExperienceItem } from '@/types/profile'
 import Section from '@/components/settings/Section'
-import { ghostBtnCls, inputCls, labelCls, secondaryBtnCls } from '@/components/settings/settings-utils'
+import {
+  emptyStateCls,
+  ghostBtnCls,
+  inputCls,
+  itemCardCls,
+  labelCls,
+  secondaryBtnCls,
+} from '@/components/settings/settings-utils'
 
 export default function ExperienceSection({
   profile,
@@ -39,11 +46,11 @@ export default function ExperienceSection({
         </div>
 
         {profile.experience.length === 0 ? (
-          <div className='text-xs text-muted-foreground'>No experience yet.</div>
+          <div className={emptyStateCls}>No experience yet.</div>
         ) : null}
 
         {profile.experience.map((exp, idx) => (
-          <div key={idx} className='rounded-2xl border border-zinc-800 bg-zinc-900/50 p-4'>
+          <div key={idx} className={itemCardCls}>
             <div className='grid grid-cols-1 gap-3 md:grid-cols-2'>
               <div className='space-y-2'>
                 <label className={labelCls}>Company name</label>

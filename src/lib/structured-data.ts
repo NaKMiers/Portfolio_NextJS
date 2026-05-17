@@ -23,7 +23,7 @@ function stripTrailingSlashOrigin(siteOrigin: string): string {
 }
 
 /** Turn stored avatar/path into absolute https URL where possible. */
-export function absolutePublicAssetUrl(siteOrigin: string, value: unknown): string | undefined {
+function absolutePublicAssetUrl(siteOrigin: string, value: unknown): string | undefined {
   const raw = trimText(value)
   if (!raw || raw === '/' || /\s/.test(raw)) return undefined
   if (/^https:\/\//i.test(raw)) return raw
@@ -104,7 +104,7 @@ function hasServiceSignals(vm: PublicPortfolioViewModel): boolean {
 }
 
 /** JSON-LD `Person`, `WebSite`, optional `ProfessionalService` + `ItemList`. */
-export function buildPortfolioJsonLdGraph(
+function buildPortfolioJsonLdGraph(
   siteOrigin: string,
   profile: Profile,
   vm: PublicPortfolioViewModel,

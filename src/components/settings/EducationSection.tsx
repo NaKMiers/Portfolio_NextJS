@@ -2,7 +2,14 @@ import React from 'react'
 
 import type { Profile, EducationItem } from '@/types/profile'
 import Section from '@/components/settings/Section'
-import { ghostBtnCls, inputCls, labelCls, secondaryBtnCls } from '@/components/settings/settings-utils'
+import {
+  emptyStateCls,
+  ghostBtnCls,
+  inputCls,
+  itemCardCls,
+  labelCls,
+  secondaryBtnCls,
+} from '@/components/settings/settings-utils'
 
 export default function EducationSection({
   profile,
@@ -39,11 +46,11 @@ export default function EducationSection({
         </div>
 
         {profile.education.length === 0 ? (
-          <div className='text-xs text-muted-foreground'>No education yet.</div>
+          <div className={emptyStateCls}>No education yet.</div>
         ) : null}
 
         {profile.education.map((ed, idx) => (
-          <div key={idx} className='rounded-2xl border border-zinc-800 bg-zinc-900/50 p-4'>
+          <div key={idx} className={itemCardCls}>
             <div className='grid grid-cols-1 gap-3 md:grid-cols-2'>
               <div className='space-y-2'>
                 <label className={labelCls}>School</label>

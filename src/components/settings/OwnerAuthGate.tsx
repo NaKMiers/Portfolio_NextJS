@@ -69,10 +69,11 @@ export default function OwnerAuthGate({ children }: { children: React.ReactNode 
 
   if (checking) {
     return (
-      <div className='z-50 relative min-h-screen bg-zinc-950/50 text-zinc-100 pt-12'>
-        <div className='mx-auto max-w-xl px-4 py-10'>
-          <div className='rounded-2xl border border-zinc-800 bg-zinc-900/70 p-6'>
-            <div className='text-sm text-zinc-300'>Checking access…</div>
+      <div className='portfolio-public-root relative z-50 min-h-screen overflow-hidden pt-12 text-pp-text'>
+        <div className='pointer-events-none absolute inset-0 pp-grid-wash opacity-60' />
+        <div className='relative mx-auto max-w-xl px-gutter py-10'>
+          <div className='rounded-[1.8rem] border border-pp-line bg-white/78 p-6 shadow-panel backdrop-blur-md'>
+            <div className='text-sm font-medium text-pp-muted'>Checking access...</div>
           </div>
         </div>
       </div>
@@ -82,21 +83,27 @@ export default function OwnerAuthGate({ children }: { children: React.ReactNode 
   if (authed) return <>{children}</>
 
   return (
-    <div className='z-50 relative min-h-screen bg-zinc-950/50 text-zinc-100 pt-12'>
-      <div className='mx-auto max-w-xl px-4 py-10'>
-        <div className='rounded-2xl border border-zinc-800 bg-zinc-900/70 p-6'>
-          <div className='text-lg font-semibold'>Owner access required</div>
-          <div className='mt-1 text-sm text-zinc-400'>
+    <div className='portfolio-public-root relative z-50 min-h-screen overflow-hidden pt-12 text-pp-text'>
+      <div className='pointer-events-none absolute inset-0 pp-grid-wash opacity-60' />
+      <div className='relative mx-auto max-w-xl px-gutter py-10'>
+        <div className='rounded-[1.9rem] border border-pp-line bg-[linear-gradient(180deg,rgba(255,255,255,0.84),rgba(255,250,246,0.76))] p-6 shadow-panel backdrop-blur-md'>
+          <div className='rounded-full border border-pp-line bg-white/82 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-pp-muted'>
+            Protected editor
+          </div>
+          <div className='mt-4 font-display text-3xl font-semibold tracking-tight text-pp-text'>
+            Owner access required
+          </div>
+          <div className='mt-2 text-sm leading-relaxed text-pp-muted'>
             Request a login code. If verified, this browser will be allowed for 24 hours.
           </div>
 
           {error ? (
-            <div className='mt-4 rounded-xl border border-rose-500/30 bg-rose-500/10 px-3 py-2 text-sm text-rose-100'>
+            <div className='mt-4 rounded-[1.15rem] border border-[rgba(163,49,47,0.16)] bg-[rgba(211,108,105,0.1)] px-3 py-2 text-sm text-[#7f2f2f]'>
               {error}
             </div>
           ) : null}
           {info ? (
-            <div className='mt-4 rounded-xl border border-cyan-500/30 bg-cyan-500/10 px-3 py-2 text-sm text-cyan-100'>
+            <div className='mt-4 rounded-[1.15rem] border border-[rgba(51,152,255,0.18)] bg-[rgba(51,152,255,0.08)] px-3 py-2 text-sm text-[#255f97]'>
               {info}
             </div>
           ) : null}
@@ -104,7 +111,7 @@ export default function OwnerAuthGate({ children }: { children: React.ReactNode 
           <div className='mt-5 space-y-4'>
             {step === 'request' ? (
               <button type='button' className={primaryBtnCls} disabled={busy} onClick={requestCode}>
-                {busy ? 'Sending…' : 'Send code to owner email'}
+                {busy ? 'Sending...' : 'Send code to owner email'}
               </button>
             ) : (
               <>
@@ -118,9 +125,9 @@ export default function OwnerAuthGate({ children }: { children: React.ReactNode 
                     inputMode='numeric'
                   />
                 </div>
-                <div className='flex items-center gap-2'>
+                <div className='flex flex-wrap items-center gap-2'>
                   <button type='button' className={primaryBtnCls} disabled={busy} onClick={verifyCode}>
-                    {busy ? 'Verifying…' : 'Verify'}
+                    {busy ? 'Verifying...' : 'Verify'}
                   </button>
                   <button
                     type='button'
@@ -147,4 +154,3 @@ export default function OwnerAuthGate({ children }: { children: React.ReactNode 
     </div>
   )
 }
-

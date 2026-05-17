@@ -7,7 +7,7 @@ import type { Profile } from '@/types/profile'
 import { makeEmptyProfile, normalizeProfile } from './profile'
 
 export const PUBLIC_PROFILE_CACHE_TAG = 'public-profile'
-export const PUBLIC_PROFILE_REVALIDATE_SECONDS = 60
+const PUBLIC_PROFILE_REVALIDATE_SECONDS = 60
 
 function toClientProfile(doc: Record<string, unknown>) {
   const { _id, createdAt, updatedAt, ...profile } = doc

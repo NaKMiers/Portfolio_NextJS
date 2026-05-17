@@ -6,13 +6,18 @@ import Section from '@/components/settings/Section'
 import type { UploadingState } from '@/components/settings/types'
 import Spinner from '@/components/settings/Spinner'
 import {
+  emptyStateCls,
+  helpTextCls,
+  itemCardCls,
   MAX_UPLOAD_MB_LABEL,
+  nestedItemCardCls,
   ghostBtnCls,
   inputCls,
   labelCls,
   secondaryBtnCls,
   textareaCls,
   uploadAssetToCloudinary,
+  uploadInputCls,
 } from '@/components/settings/settings-utils'
 
 export default function ProjectsSection({
@@ -67,11 +72,11 @@ export default function ProjectsSection({
         </div>
 
         {profile.projects.length === 0 ? (
-          <div className='text-xs text-muted-foreground'>No projects yet.</div>
+          <div className={emptyStateCls}>No projects yet.</div>
         ) : null}
 
         {profile.projects.map((prj, idx) => (
-          <div key={idx} className='rounded-2xl border border-zinc-800 bg-zinc-900/50 p-4'>
+          <div key={idx} className={itemCardCls}>
             <div className='grid grid-cols-1 gap-3 md:grid-cols-2'>
               <div className='space-y-2 md:col-span-2'>
                 <label className={labelCls}>Title</label>
@@ -92,7 +97,7 @@ export default function ProjectsSection({
                 <div className='flex items-center justify-between gap-3'>
                   <div>
                     <label className={labelCls}>Parts</label>
-                    <p className='text-xs text-zinc-400'>
+                    <p className={helpTextCls}>
                       Each part can have an image, description, and a link. Autoplay slider uses part
                       images.
                     </p>
@@ -117,19 +122,19 @@ export default function ProjectsSection({
                 </div>
 
                 {(prj.parts ?? []).length === 0 ? (
-                  <div className='text-xs text-zinc-500'>No parts yet.</div>
+                  <div className={emptyStateCls}>No parts yet.</div>
                 ) : null}
 
                 <div className='space-y-3'>
                   {(prj.parts ?? []).map((part, partIdx) => (
-                    <div key={partIdx} className='rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4'>
+                    <div key={partIdx} className={nestedItemCardCls}>
                       <div className='grid grid-cols-1 gap-3 md:grid-cols-2'>
                         <div className='space-y-2'>
                           <div className='flex items-center justify-between gap-3'>
                             <label className={labelCls}>Part image</label>
-                            {uploading.projects[idx] ? <Spinner className='text-zinc-300' /> : null}
+                            {uploading.projects[idx] ? <Spinner className='text-pp-muted' /> : null}
                           </div>
-                          <p className='text-xs text-zinc-400'>
+                          <p className={helpTextCls}>
                             Max {MAX_UPLOAD_MB_LABEL} MB. Uploads immediately.
                           </p>
                           <input
@@ -137,7 +142,7 @@ export default function ProjectsSection({
                             aria-label={`Upload image for project ${idx + 1} part ${partIdx + 1}`}
                             accept='image/*'
                             disabled={!!uploading.projects[idx]}
-                            className={`${inputCls} file:mr-3 file:rounded-md file:border-0 file:bg-zinc-800 file:px-2.5 file:py-1.5 file:text-xs file:font-medium file:text-zinc-200 hover:file:bg-zinc-700`}
+                            className={uploadInputCls}
                             onChange={async e => {
                               const file = e.target.files?.[0]
                               e.target.value = ''
@@ -175,10 +180,10 @@ export default function ProjectsSection({
                             <img
                               src={part.image}
                               alt={`Part ${partIdx + 1} image`}
-                              className='aspect-video w-full rounded-lg border border-zinc-700 object-cover'
+                              className='aspect-video w-full rounded-[1rem] border border-pp-line object-cover shadow-[0_12px_24px_rgba(46,35,28,0.06)]'
                             />
                           ) : (
-                            <div className='text-xs text-zinc-500'>No image</div>
+                            <div className={emptyStateCls}>No image</div>
                           )}
                         </div>
 

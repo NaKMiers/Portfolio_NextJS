@@ -15,17 +15,31 @@ import { MAX_UPLOAD_BYTES, formatMaxUploadMb } from '@/lib/upload-limits'
 
 export const MAX_UPLOAD_MB_LABEL = formatMaxUploadMb()
 
-export const labelCls = 'mb-1.5 block text-xs font-medium uppercase tracking-wide text-zinc-400'
+export const labelCls =
+  'mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.16em] text-pp-muted'
 export const inputCls =
-  'w-full rounded-xl border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 outline-none transition placeholder:text-zinc-500 focus:border-cyan-500/70 focus:ring-2 focus:ring-cyan-500/20'
+  'w-full rounded-[1.05rem] border border-pp-line bg-white/78 px-4 py-3 text-sm text-pp-text shadow-[inset_0_1px_0_rgba(255,255,255,0.72)] outline-none transition placeholder:text-pp-muted/75 focus:border-pp-blue/55 focus:bg-white focus:ring-4 focus:ring-pp-blue/10'
 export const textareaCls =
-  'w-full min-h-[88px] rounded-xl border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 outline-none transition placeholder:text-zinc-500 focus:border-cyan-500/70 focus:ring-2 focus:ring-cyan-500/20'
+  'w-full min-h-[88px] rounded-[1.1rem] border border-pp-line bg-white/78 px-4 py-3 text-sm text-pp-text shadow-[inset_0_1px_0_rgba(255,255,255,0.72)] outline-none transition placeholder:text-pp-muted/75 focus:border-pp-blue/55 focus:bg-white focus:ring-4 focus:ring-pp-blue/10'
 export const secondaryBtnCls =
-  'rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs font-medium text-zinc-200 transition hover:border-zinc-600 hover:bg-zinc-800'
+  'inline-flex items-center justify-center rounded-full border border-pp-line bg-white/82 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-pp-text shadow-[0_12px_30px_rgba(46,35,28,0.06)] transition hover:-translate-y-0.5 hover:bg-white'
 export const ghostBtnCls =
-  'rounded-lg border border-transparent px-3 py-1.5 text-xs font-medium text-zinc-300 transition hover:border-zinc-700 hover:bg-zinc-800/80'
+  'inline-flex items-center justify-center rounded-full border border-transparent px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-pp-muted transition hover:border-pp-line hover:bg-white/78 hover:text-pp-text'
 export const primaryBtnCls =
-  'rounded-xl border border-cyan-500/40 bg-cyan-500/20 px-4 py-2 text-sm font-semibold text-cyan-100 transition hover:bg-cyan-500/30 disabled:cursor-not-allowed disabled:opacity-60'
+  'inline-flex items-center justify-center rounded-full bg-pp-text px-5 py-3 text-sm font-semibold text-white shadow-[0_18px_34px_rgba(17,17,17,0.18)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_40px_rgba(17,17,17,0.22)] disabled:cursor-not-allowed disabled:opacity-60'
+export const itemCardCls =
+  'rounded-[1.4rem] border border-pp-line bg-white/72 p-4 shadow-[0_18px_36px_rgba(46,35,28,0.06)] backdrop-blur-md'
+export const nestedItemCardCls =
+  'rounded-[1.2rem] border border-pp-line bg-[rgba(255,255,255,0.58)] p-4 shadow-[0_14px_26px_rgba(46,35,28,0.05)] backdrop-blur-sm'
+export const iconPreviewCls =
+  'flex h-11 w-11 items-center justify-center rounded-[1rem] border border-pp-line bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(246,240,233,0.92))] text-pp-text shadow-[0_10px_20px_rgba(46,35,28,0.06)]'
+export const helpTextCls = 'text-xs leading-relaxed text-pp-muted'
+export const emptyStateCls =
+  'rounded-[1rem] border border-dashed border-pp-line bg-white/42 px-4 py-3 text-xs font-medium text-pp-muted'
+export const uploadInputCls =
+  `${inputCls} file:mr-3 file:rounded-full file:border file:border-pp-line file:bg-[rgba(255,255,255,0.94)] file:px-3.5 file:py-2 file:text-[11px] file:font-semibold file:uppercase file:tracking-[0.14em] file:text-pp-text hover:file:bg-white`
+export const inlineLinkCls =
+  'text-xs font-semibold text-pp-blue underline decoration-pp-blue/45 underline-offset-[0.2em] hover:decoration-pp-blue'
 
 export async function uploadAssetToCloudinary(
   file: File,

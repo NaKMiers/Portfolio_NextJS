@@ -2,7 +2,7 @@ import type { AnchorHTMLAttributes, ReactNode } from 'react'
 
 const cx = (...parts: (string | undefined | false)[]) => parts.filter(Boolean).join(' ')
 
-export function isExternalHttpUrl(href: string): boolean {
+function isExternalHttpUrl(href: string): boolean {
   return /^https?:\/\//i.test(href.trim())
 }
 

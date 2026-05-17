@@ -6,12 +6,17 @@ import Section from '@/components/settings/Section'
 import type { UploadingState } from '@/components/settings/types'
 import Spinner from '@/components/settings/Spinner'
 import {
+  emptyStateCls,
+  helpTextCls,
+  inlineLinkCls,
+  itemCardCls,
   MAX_UPLOAD_MB_LABEL,
   ghostBtnCls,
   inputCls,
   labelCls,
   secondaryBtnCls,
   uploadAssetToCloudinary,
+  uploadInputCls,
 } from '@/components/settings/settings-utils'
 
 export default function BasicsSection({
@@ -29,17 +34,15 @@ export default function BasicsSection({
   setUploading: React.Dispatch<React.SetStateAction<UploadingState>>
   setError: React.Dispatch<React.SetStateAction<string | null>>
 }) {
-  const fileInputCls = `${inputCls} file:mr-3 file:rounded-md file:border-0 file:bg-zinc-800 file:px-2.5 file:py-1.5 file:text-xs file:font-medium file:text-zinc-200 hover:file:bg-zinc-700`
-
   return (
     <Section title='Basics' badge='avatar, CV, headings' defaultOpen>
       <div className='grid grid-cols-1 gap-5 md:grid-cols-2'>
         <div className='space-y-2'>
           <div className='flex items-center justify-between gap-3'>
             <label className={labelCls}>CV (File)</label>
-            {uploading.cv ? <Spinner className='text-zinc-300' /> : null}
+            {uploading.cv ? <Spinner className='text-pp-muted' /> : null}
           </div>
-          <p className='text-xs text-zinc-400'>
+          <p className={helpTextCls}>
             Max {MAX_UPLOAD_MB_LABEL} MB. Uploaded to Cloudinary now; Save stores the URL only.
           </p>
           <input
@@ -47,7 +50,7 @@ export default function BasicsSection({
             aria-label='Upload CV file'
             accept='application/pdf,.pdf,.doc,.docx'
             disabled={uploading.cv}
-            className={fileInputCls}
+            className={uploadInputCls}
             onChange={async e => {
               const file = e.target.files?.[0]
               e.target.value = ''
@@ -68,9 +71,9 @@ export default function BasicsSection({
               }
             }}
           />
-          {uploading.cv ? <p className='text-xs text-zinc-400'>Uploading...</p> : null}
+          {uploading.cv ? <p className={helpTextCls}>Uploading...</p> : null}
           {profile.cv ? (
-            <a className='text-xs text-cyan-300 underline underline-offset-2' href={profile.cv} target='_blank' rel='noreferrer'>
+            <a className={inlineLinkCls} href={profile.cv} target='_blank' rel='noreferrer'>
               Current CV
             </a>
           ) : null}
@@ -79,15 +82,15 @@ export default function BasicsSection({
         <div className='space-y-2'>
           <div className='flex items-center justify-between gap-3'>
             <label className={labelCls}>Background Image</label>
-            {uploading.background ? <Spinner className='text-zinc-300' /> : null}
+            {uploading.background ? <Spinner className='text-pp-muted' /> : null}
           </div>
-          <p className='text-xs text-zinc-400'>Max {MAX_UPLOAD_MB_LABEL} MB per image. Uploads immediately.</p>
+          <p className={helpTextCls}>Max {MAX_UPLOAD_MB_LABEL} MB per image. Uploads immediately.</p>
           <input
             type='file'
             aria-label='Upload background image'
             accept='image/*'
             disabled={uploading.background}
-            className={fileInputCls}
+            className={uploadInputCls}
             onChange={async e => {
               const file = e.target.files?.[0]
               e.target.value = ''
@@ -108,27 +111,31 @@ export default function BasicsSection({
               }
             }}
           />
-          {uploading.background ? <p className='text-xs text-zinc-400'>Uploading...</p> : null}
+          {uploading.background ? <p className={helpTextCls}>Uploading...</p> : null}
           {preview.bg ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={preview.bg} alt='Background preview' className='h-24 w-full rounded-lg object-cover' />
+            <img
+              src={preview.bg}
+              alt='Background preview'
+              className='h-28 w-full rounded-[1.1rem] border border-pp-line object-cover shadow-[0_12px_24px_rgba(46,35,28,0.06)]'
+            />
           ) : (
-            <div className='text-xs text-zinc-500'>Optional</div>
+            <div className={emptyStateCls}>Optional</div>
           )}
         </div>
 
         <div className='space-y-2'>
           <div className='flex items-center justify-between gap-3'>
             <label className={labelCls}>Avatar</label>
-            {uploading.avatar ? <Spinner className='text-zinc-300' /> : null}
+            {uploading.avatar ? <Spinner className='text-pp-muted' /> : null}
           </div>
-          <p className='text-xs text-zinc-400'>Max {MAX_UPLOAD_MB_LABEL} MB per image. Uploads immediately.</p>
+          <p className={helpTextCls}>Max {MAX_UPLOAD_MB_LABEL} MB per image. Uploads immediately.</p>
           <input
             type='file'
             aria-label='Upload avatar image'
             accept='image/*'
             disabled={uploading.avatar}
-            className={fileInputCls}
+            className={uploadInputCls}
             onChange={async e => {
               const file = e.target.files?.[0]
               e.target.value = ''
@@ -149,12 +156,16 @@ export default function BasicsSection({
               }
             }}
           />
-          {uploading.avatar ? <p className='text-xs text-zinc-400'>Uploading...</p> : null}
+          {uploading.avatar ? <p className={helpTextCls}>Uploading...</p> : null}
           {preview.av ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={preview.av} alt='Avatar preview' className='h-24 w-24 rounded-full object-cover' />
+            <img
+              src={preview.av}
+              alt='Avatar preview'
+              className='h-24 w-24 rounded-full border border-pp-line object-cover shadow-[0_14px_28px_rgba(46,35,28,0.08)]'
+            />
           ) : (
-            <div className='text-xs text-zinc-500'>Optional</div>
+            <div className={emptyStateCls}>Optional</div>
           )}
         </div>
 
@@ -199,10 +210,10 @@ export default function BasicsSection({
               + Add
             </button>
           </div>
-          {profile.jobTitle.length === 0 ? <div className='text-xs text-zinc-500'>No job titles yet.</div> : null}
+          {profile.jobTitle.length === 0 ? <div className={emptyStateCls}>No job titles yet.</div> : null}
           <div className='space-y-2'>
             {profile.jobTitle.map((title, idx) => (
-              <div key={idx} className='rounded-xl border border-zinc-800 bg-zinc-900/50 p-3'>
+              <div key={idx} className={itemCardCls}>
                 <div className='flex items-center gap-2'>
                   <input
                     type='text'

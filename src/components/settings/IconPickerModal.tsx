@@ -19,12 +19,12 @@ export default function IconPickerModal({
   if (!open) return null
 
   return (
-    <div className='fixed inset-0 z-[60] flex items-center justify-center bg-black/70 p-4'>
-      <div className='w-full max-w-5xl rounded-2xl border border-zinc-700 bg-zinc-900 p-4 shadow-2xl'>
+    <div className='fixed inset-0 z-[60] flex items-center justify-center bg-[rgba(24,20,18,0.46)] p-4 backdrop-blur-sm'>
+      <div className='w-full max-w-5xl rounded-[1.9rem] border border-pp-line bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(255,250,246,0.8))] p-4 shadow-panel backdrop-blur-md'>
         <div className='mb-3 flex items-center justify-between gap-3'>
           <div>
-            <h3 className='text-base font-semibold text-zinc-100'>Select icon</h3>
-            <p className='text-xs text-zinc-400'>
+            <h3 className='font-display text-xl font-semibold tracking-tight text-pp-text'>Select icon</h3>
+            <p className='text-xs leading-relaxed text-pp-muted'>
               Selected icon code will be saved (e.g. `fa:FaReact`).
             </p>
           </div>
@@ -45,12 +45,14 @@ export default function IconPickerModal({
             <button
               key={item.code}
               type='button'
-              className={`${secondaryBtnCls} flex items-center gap-2 rounded-lg border-zinc-700 bg-zinc-950 px-2 py-2 text-left hover:border-cyan-500/50 hover:bg-zinc-800`}
+              className={`${secondaryBtnCls} flex items-center gap-2 rounded-[1rem] bg-white/82 px-3 py-3 text-left hover:border-pp-blue/35`}
               onClick={() => onSelect(item.code)}
               title={item.code}
             >
-              <item.Component size={18} className='shrink-0 text-zinc-100' />
-              <span className='truncate text-[11px] text-zinc-300'>{item.name}</span>
+              <item.Component size={18} className='shrink-0 text-pp-text' />
+              <span className='truncate text-[11px] font-semibold uppercase tracking-[0.12em] text-pp-muted'>
+                {item.name}
+              </span>
             </button>
           ))}
         </div>

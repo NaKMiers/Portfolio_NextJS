@@ -2,7 +2,7 @@
 
 import CountUp from 'react-countup'
 import { useInView, useReducedMotion } from 'framer-motion'
-import { useMemo, useRef } from 'react'
+import { useMemo, useRef, useSyncExternalStore } from 'react'
 
 type ParsedValue = {
   prefix: string
@@ -43,6 +43,11 @@ export default function AnimatedCounter({ value }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement | null>(null)
   const isInView = useInView(ref, { once: true, amount: 0.75 })
   const prefersReducedMotion = useReducedMotion()
+  const hasMounted = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  )
   const parsed = useMemo(() => parseCountValue(value), [value])
 
   if (parsed.value === null) {
@@ -50,22 +55,27 @@ export default function AnimatedCounter({ value }: AnimatedCounterProps) {
   }
 
   const { prefix, suffix, value: endValue, decimals } = parsed
+  const shouldAnimate = hasMounted && !prefersReducedMotion && isInView
+  const shouldShowFinalValue = hasMounted && prefersReducedMotion
+  const fallbackValue = `${prefix}0${suffix}`
 
   return (
     <span ref={ref}>
-      {isInView || prefersReducedMotion ? (
+      {shouldAnimate ? (
         <CountUp
           start={0}
           end={endValue}
-          duration={prefersReducedMotion ? 0 : 2.3}
+          duration={2.3}
           separator=','
           decimals={decimals}
           decimal='.'
           prefix={prefix}
           suffix={suffix}
         />
+      ) : shouldShowFinalValue ? (
+        value
       ) : (
-        `${prefix}0${suffix}`
+        fallbackValue
       )}
     </span>
   )

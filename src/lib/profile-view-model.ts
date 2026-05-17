@@ -49,7 +49,7 @@ export type HeroViewModel = {
   stats: Stat[]
 }
 
-export type SocialProofLink = {
+type SocialProofLink = {
   name: string
   url: string
   icon: string
@@ -90,7 +90,7 @@ export type ProjectsBandViewModel = {
   projects: ProjectItem[]
 }
 
-export type TrustCardViewModel = {
+type TrustCardViewModel = {
   id: string
   /** Small category label above the title (metrics, experience, etc.). */
   kicker?: string
@@ -102,12 +102,12 @@ export type TrustViewModel = {
   cards: TrustCardViewModel[]
 }
 
-export type ContactViewModel = {
+type ContactViewModel = {
   socials: SocialProofLink[]
   cvUrl: string | null
 }
 
-export type PublicPortfolioMeta = {
+type PublicPortfolioMeta = {
   displayName: string
   /** True when there is almost nothing safe to render publicly (sections should hide). */
   isEffectivelyEmpty: boolean
@@ -350,5 +350,3 @@ export function derivePublicPortfolioViewModel(profile: Profile): PublicPortfoli
     contact,
   }
 }
-
-export { FEATURED_PROJECT_LIMIT } from '@/lib/profile-copy'

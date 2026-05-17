@@ -18,7 +18,7 @@ export const FEATURED_PROJECT_LIMIT = 3
 export const TRUST_CARD_LIMIT = 8
 
 /** Rough cap for founder quote pulled from story copy. */
-export const FOUNDER_QUOTE_MAX_CHARS = 420
+const FOUNDER_QUOTE_MAX_CHARS = 420
 
 export function trimText(value: unknown): string {
   if (value === null || value === undefined) return ''
@@ -132,7 +132,7 @@ export function sanitizeSocialLinks(socials: SocialLink[]): SocialLink[] {
     .filter(s => s.link.length > 0 && isSupportedSocialUrl(s.link))
 }
 
-export function socialPlatformName(link: string): string | null {
+function socialPlatformName(link: string): string | null {
   const raw = trimText(link)
   if (!raw) return null
 
@@ -179,7 +179,7 @@ function looksLikePersonLabel(name: string): boolean {
   return t.split(' ').length >= 2 && !/[./@]/.test(t)
 }
 
-export function socialDisplayName(name: string, link: string): string {
+function socialDisplayName(name: string, link: string): string {
   const platform = socialPlatformName(link)
   const cleaned = collapseWhitespace(name)
 
@@ -241,7 +241,7 @@ export function sanitizeSkillGroups(groups: SkillGroup[]): SkillGroup[] {
     .filter(g => g.groupName.length > 0 || g.items.length > 0)
 }
 
-export function sanitizeProjectParts(parts: ProjectPart[]): ProjectPart[] {
+function sanitizeProjectParts(parts: ProjectPart[]): ProjectPart[] {
   return parts.map(p => ({
     image: trimText(p.image),
     description: trimText(p.description),

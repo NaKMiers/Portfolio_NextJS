@@ -2,11 +2,14 @@ import React from 'react'
 
 export default function SettingLoading() {
   return (
-    <div className='z-50 relative min-h-screen bg-zinc-950/50 text-zinc-100 pt-12'>
-      <div className='mx-auto max-w-6xl px-4 py-10'>
-        <div className='rounded-2xl border border-zinc-800 bg-zinc-900/70 p-6'>
-          <h2 className='text-lg font-semibold'>Loading profile...</h2>
-          <p className='mt-1 text-sm text-zinc-400'>Please wait.</p>
+    <div className='portfolio-public-root relative z-50 min-h-screen overflow-hidden pt-12 text-pp-text'>
+      <div className='pointer-events-none absolute inset-0 pp-grid-wash opacity-60' />
+      <div className='relative mx-auto max-w-editorial px-gutter py-10'>
+        <div className='rounded-[1.8rem] border border-pp-line bg-white/78 p-6 shadow-panel backdrop-blur-md'>
+          <h2 className='font-display text-2xl font-semibold tracking-tight text-pp-text'>
+            Loading profile...
+          </h2>
+          <p className='mt-2 text-sm leading-relaxed text-pp-muted'>Preparing your editorial settings view.</p>
         </div>
       </div>
     </div>

@@ -3,7 +3,16 @@ import React from 'react'
 import type { Profile } from '@/types/profile'
 import Section from '@/components/settings/Section'
 import type { IconPickerTarget } from '@/components/settings/types'
-import { ghostBtnCls, inputCls, labelCls, secondaryBtnCls, textareaCls } from '@/components/settings/settings-utils'
+import {
+  emptyStateCls,
+  ghostBtnCls,
+  iconPreviewCls,
+  inputCls,
+  itemCardCls,
+  labelCls,
+  secondaryBtnCls,
+  textareaCls,
+} from '@/components/settings/settings-utils'
 import { resolveIconFromCode } from '@/utils/iconResolver'
 
 export default function ServicesSection({
@@ -69,15 +78,15 @@ export default function ServicesSection({
             </button>
           </div>
 
-          {profile.services.length === 0 ? <div className='text-xs text-muted-foreground'>No services yet.</div> : null}
+          {profile.services.length === 0 ? <div className={emptyStateCls}>No services yet.</div> : null}
 
           {profile.services.map((sv, idx) => (
-            <div key={idx} className='rounded-2xl border border-zinc-800 bg-zinc-900/50 p-4'>
+            <div key={idx} className={itemCardCls}>
               <div className='grid grid-cols-1 gap-3 md:grid-cols-2'>
                 <div className='space-y-2'>
                   <label className={labelCls}>Icon code</label>
                   <div className='flex items-center gap-2'>
-                    <div className='flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-700 bg-zinc-950 text-zinc-100'>
+                    <div className={iconPreviewCls}>
                       {resolveIconFromCode(sv.icon, 18)}
                     </div>
                     <input

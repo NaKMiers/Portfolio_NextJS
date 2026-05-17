@@ -3,7 +3,15 @@ import React from 'react'
 import type { Profile, SocialLink } from '@/types/profile'
 import Section from '@/components/settings/Section'
 import type { IconPickerTarget } from '@/components/settings/types'
-import { ghostBtnCls, inputCls, labelCls, secondaryBtnCls } from '@/components/settings/settings-utils'
+import {
+  emptyStateCls,
+  ghostBtnCls,
+  iconPreviewCls,
+  inputCls,
+  itemCardCls,
+  labelCls,
+  secondaryBtnCls,
+} from '@/components/settings/settings-utils'
 import { resolveIconFromCode } from '@/utils/iconResolver'
 
 export default function SocialsSection({
@@ -37,9 +45,9 @@ export default function SocialsSection({
       </div>
 
       <div className='space-y-3'>
-        {profile.socials.length === 0 ? <div className='text-xs text-muted-foreground'>No socials yet.</div> : null}
+        {profile.socials.length === 0 ? <div className={emptyStateCls}>No socials yet.</div> : null}
         {profile.socials.map((s, idx) => (
-          <div key={idx} className='rounded-xl border border-zinc-800 bg-zinc-900/50 p-3'>
+          <div key={idx} className={itemCardCls}>
             <div className='grid grid-cols-1 gap-3'>
               <div className='space-y-2'>
                 <label className={labelCls}>Display name</label>
@@ -49,7 +57,7 @@ export default function SocialsSection({
               <div className='space-y-2'>
                 <label className={labelCls}>Icon code</label>
                 <div className='flex items-center gap-2'>
-                  <div className='flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-700 bg-zinc-950 text-zinc-100'>
+                  <div className={iconPreviewCls}>
                     {s.icon ? resolveIconFromCode(s.icon, 18) : null}
                   </div>
                   <input

@@ -142,8 +142,13 @@ function SettingEditor({ appProfile, setAppProfile }: SettingEditorProps) {
 
   return (
     <OwnerAuthGate>
-      <div className='z-50 relative min-h-screen bg-zinc-950/50 text-zinc-100 pt-12'>
-        <div className='mx-auto max-w-6xl px-4 py-10'>
+      <div className='portfolio-public-root relative z-50 min-h-screen overflow-hidden pt-12 text-pp-text'>
+        <div className='pointer-events-none absolute inset-0 pp-grid-wash opacity-60' />
+        <div className='pointer-events-none absolute -left-16 top-32 h-48 w-48 rounded-full bg-pp-orange/15 blur-3xl' />
+        <div className='pointer-events-none absolute right-0 top-20 h-64 w-64 rounded-full bg-pp-blue/10 blur-3xl' />
+        <div className='pointer-events-none absolute bottom-12 left-1/3 h-52 w-52 rounded-full bg-pp-pink/10 blur-3xl' />
+
+        <div className='relative mx-auto max-w-editorial px-gutter py-10 md:py-12'>
           <SettingToolbar
             saving={saving}
             uploading={uploading}
@@ -156,8 +161,8 @@ function SettingEditor({ appProfile, setAppProfile }: SettingEditorProps) {
 
           <SettingErrorBanner message={error} />
 
-          <div className='grid grid-cols-1 gap-6 lg:grid-cols-[1fr_360px]'>
-            <div className='space-y-6'>
+          <div className='grid grid-cols-1 gap-6 xl:grid-cols-[minmax(0,1fr)_380px] xl:gap-8'>
+            <div className='space-y-5'>
               <BasicsSection
                 profile={profile}
                 setProfile={setProfile}
@@ -166,7 +171,7 @@ function SettingEditor({ appProfile, setAppProfile }: SettingEditorProps) {
                 setUploading={setUploading}
                 setError={setError}
               />
-              <div className='grid grid-cols-1 gap-6 lg:grid-cols-2'>
+              <div className='grid grid-cols-1 items-start gap-5 lg:grid-cols-2'>
                 <SocialsSection
                   profile={profile}
                   setProfile={setProfile}
@@ -197,7 +202,9 @@ function SettingEditor({ appProfile, setAppProfile }: SettingEditorProps) {
               />
             </div>
 
-            <ProfilePreviewPanel profile={profile} preview={preview} />
+            <div className='xl:pl-2'>
+              <ProfilePreviewPanel profile={profile} preview={preview} />
+            </div>
           </div>
 
           <IconPickerModal
