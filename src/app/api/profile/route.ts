@@ -1,9 +1,11 @@
+import { revalidateTag } from 'next/cache'
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 import { getAuthCookieName, verifyAuthToken } from '@/lib/auth'
 import { connectDatabase } from '@/lib/mongodb'
 import { sendMail } from '@/lib/mailer'
+import { PUBLIC_PROFILE_CACHE_TAG } from '@/lib/profile-data'
 import { PROFILE_DOCUMENT_ID, ProfileModel } from '@/models/Profile'
 import { getRequiredEnv } from '@/lib/required-env'
 import { MAX_PROFILE_JSON_BYTES } from '@/lib/upload-limits'
@@ -78,6 +80,8 @@ export async function POST(request: NextRequest) {
     if (!updatedDoc) {
       return jsonError('Failed to load updated profile', 500)
     }
+
+    revalidateTag(PUBLIC_PROFILE_CACHE_TAG, 'max')
 
     const summary = `Updated profile: ${parsed.fullName || parsed.username || '-'} (${
       Array.isArray(parsed.jobTitle) ? parsed.jobTitle.join(', ') || '-' : '-'

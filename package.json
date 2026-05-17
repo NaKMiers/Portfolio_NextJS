@@ -11,8 +11,9 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test": "npm run test:api && npm run test:e2e",
+    "test": "vitest run && npm run test:e2e",
     "test:api": "vitest run tests/api",
+    "test:unit": "vitest run tests/unit",
     "test:e2e": "playwright test",
     "test:e2e:install": "playwright install chromium"
   },

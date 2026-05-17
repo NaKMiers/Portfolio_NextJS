@@ -1,4 +1,4 @@
-# Port4lio — Codex agent instructions
+# Port4lio - Codex agent instructions
 
 Agent configuration for [OpenAI Codex](https://developers.openai.com/codex/). gstack skills live in `.agents/skills/`.
 

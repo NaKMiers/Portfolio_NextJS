@@ -2,6 +2,223 @@
 @tailwind components;
 @tailwind utilities;
 
+/* --------------------------------------------------------------------------
+   Public one-page editorial foundation (Chunk 2)
+   Scoped under `.portfolio-public-root` so admin `SiteChrome` is unaffected.
+   -------------------------------------------------------------------------- */
+.portfolio-public-root {
+  --pp-bg: #f7f3ee;
+  --pp-panel: rgba(255, 255, 255, 0.78);
+  --pp-panel-strong: #fffdfa;
+  --pp-text: #1f1c1a;
+  --pp-muted: #6d6661;
+  --pp-line: rgba(31, 28, 26, 0.08);
+  --pp-shadow: 0 30px 70px rgba(46, 35, 28, 0.08);
+  --pp-blue: #3398ff;
+  --pp-green: #39be71;
+  --pp-violet: #7b6dff;
+  --pp-pink: #f38fd1;
+  --pp-orange: #ff9f40;
+  --pp-max: 1160px;
+  --pp-gutter: clamp(1rem, 4vw, 2rem);
+  --pp-section-y: clamp(4rem, 10vw, 7rem);
+  --pp-section-y-sm: clamp(2.5rem, 6vw, 4rem);
+  --pp-radius-panel: 1.25rem;
+  --font-display: var(--font-montserrat), 'Montserrat', system-ui, sans-serif;
+  --font-body: var(--font-source-sans-3), 'Source Sans 3', system-ui, sans-serif;
+
+  isolation: isolate;
+  font-family: var(--font-body);
+  color: var(--pp-text);
+  line-height: 1.6;
+  background:
+    radial-gradient(circle at 16% 18%, rgba(255, 159, 64, 0.11), transparent 11%),
+    radial-gradient(circle at 82% 12%, rgba(57, 190, 113, 0.1), transparent 12%),
+    radial-gradient(circle at 88% 74%, rgba(243, 143, 209, 0.08), transparent 15%),
+    radial-gradient(circle at 10% 78%, rgba(123, 109, 255, 0.08), transparent 12%),
+    radial-gradient(circle at 28% 48%, rgba(255, 214, 138, 0.12), transparent 14%),
+    radial-gradient(circle at 70% 52%, rgba(51, 152, 255, 0.08), transparent 16%),
+    radial-gradient(circle at top left, rgba(51, 152, 255, 0.08), transparent 24%),
+    radial-gradient(circle at top right, rgba(123, 109, 255, 0.06), transparent 24%),
+    linear-gradient(
+      90deg,
+      transparent 0,
+      transparent calc(50% - 540px),
+      rgba(255, 255, 255, 0.24) calc(50% - 540px),
+      rgba(255, 255, 255, 0.24) calc(50% - 539px),
+      transparent calc(50% - 539px),
+      transparent calc(50% + 539px),
+      rgba(255, 255, 255, 0.22) calc(50% + 539px),
+      rgba(255, 255, 255, 0.22) calc(50% + 540px),
+      transparent calc(50% + 540px)
+    ),
+    var(--pp-bg);
+}
+
+.portfolio-public-root p {
+  color: var(--pp-muted);
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+.portfolio-public-root a {
+  text-decoration-color: rgba(51, 152, 255, 0.45);
+  text-underline-offset: 0.18em;
+}
+
+.portfolio-public-root a:hover {
+  text-decoration-color: var(--pp-blue);
+}
+
+.portfolio-public-root .pp-grid-wash {
+  background:
+    linear-gradient(90deg, transparent 0, transparent calc(50% - 540px), rgba(255, 255, 255, 0.18) calc(50% - 540px), rgba(255, 255, 255, 0.18) calc(50% - 539px), transparent calc(50% - 539px), transparent calc(50% + 539px), rgba(255, 255, 255, 0.15) calc(50% + 539px), rgba(255, 255, 255, 0.15) calc(50% + 540px), transparent calc(50% + 540px)),
+    linear-gradient(rgba(31, 28, 26, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(31, 28, 26, 0.035) 1px, transparent 1px);
+  background-size: auto, 100% 7.5rem, 7.5rem 100%;
+  mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.65) 6%, rgba(0, 0, 0, 0.75) 92%, transparent 100%);
+}
+
+.portfolio-public-root .pp-shadow-soft {
+  box-shadow: 0 18px 34px rgba(46, 35, 28, 0.08);
+}
+
+.portfolio-public-root .pp-float {
+  animation: pp-float 12s ease-in-out infinite;
+}
+
+.portfolio-public-root .pp-float-delayed {
+  animation: pp-float 15s ease-in-out infinite;
+  animation-delay: -5s;
+}
+
+.portfolio-public-root .pp-sway {
+  animation: pp-sway 14s ease-in-out infinite;
+}
+
+.portfolio-public-root .pp-spin-slow {
+  animation: pp-spin-slow 26s linear infinite;
+}
+
+.portfolio-public-root .pp-orbit {
+  animation: pp-orbit 18s linear infinite;
+}
+
+.portfolio-public-root .pp-meteor {
+  animation: pp-meteor 7.6s linear infinite;
+}
+
+.portfolio-public-root .pp-meteor-delayed {
+  animation: pp-meteor 9.2s linear infinite;
+  animation-delay: -3.1s;
+}
+
+.portfolio-public-root .pp-meteor-idle {
+  animation: pp-meteor-idle 11s ease-in-out infinite;
+}
+
+.portfolio-public-root .pp-pulse-soft {
+  animation: pp-pulse-soft 4.6s ease-in-out infinite;
+}
+
+@keyframes pp-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--pp-rotate, 0deg));
+  }
+  50% {
+    transform: translate3d(0, -18px, 0) rotate(calc(var(--pp-rotate, 0deg) + 3deg));
+  }
+}
+
+@keyframes pp-sway {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--pp-rotate, 0deg));
+  }
+  50% {
+    transform: translate3d(10px, -10px, 0) rotate(calc(var(--pp-rotate, 0deg) - 5deg));
+  }
+}
+
+@keyframes pp-spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pp-orbit {
+  from {
+    transform: rotate(0deg) translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg) translateX(12px) rotate(-180deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(0) rotate(-360deg);
+  }
+}
+
+@keyframes pp-meteor {
+  0% {
+    opacity: 0;
+    transform: translate3d(-24px, -12px, 0) rotate(-24deg) scaleX(0.55);
+  }
+  12% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(82px, 38px, 0) rotate(-24deg) scaleX(1.15);
+  }
+}
+
+@keyframes pp-meteor-idle {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(24deg);
+  }
+  50% {
+    transform: translate3d(16px, -10px, 0) rotate(16deg);
+  }
+}
+
+@keyframes pp-pulse-soft {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-public-root * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  .portfolio-public-root .pp-grid-wash {
+    background-size: auto;
+  }
+}
+
 .translate-z-0 {
   transform: translateZ(0px);
 }
